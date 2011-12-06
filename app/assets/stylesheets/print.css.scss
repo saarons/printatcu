@@ -1,0 +1,64 @@
+// Place all the styles related to the print controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body, #main label, #main input, #main select {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+#main {
+  height: 400px;
+}
+
+.divider, .choice-span, .file-span, .print-span {
+  top: 50%;
+  position: relative;
+}
+
+.print-span {
+  margin-top: -6px;
+}
+
+.choice-span {
+  margin-top: -58px;
+}
+
+.page-header {
+  padding: 20px 20px 10px;
+  margin: -20px -20px 20px;
+}
+
+.content {
+  padding: 20px;
+  margin: 0 -20px;
+}
+
+footer p {
+  text-align: center;
+}
+
+footer p a {
+  color: #404040;
+}
+
+footer p a:hover {
+  color: #404040;
+}
+
+.page-header h1 {
+  text-align: center;
+}
+
+.divider {
+  margin-top: -46px;
+  font-size: 100px;
+  text-align: center;
+}
+
+.inputs-list {
+  margin-top: 4px;
+}
+
+#print_copies {
+    margin-left: 4px;
+}

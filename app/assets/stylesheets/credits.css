@@ -1,0 +1,14 @@
+#credits {
+	position: absolute;
+	bottom: 1px;
+	right: 1px;
+	font-size: 8pt;
+	color: #BBBBBB;
+}
+#credits a {
+	text-decoration: none;
+	color: #BBBBBB;
+}
+#credits a:hover {
+	color: #888888;
+}

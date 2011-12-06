@@ -1,0 +1,55 @@
+.container
+  .content
+    header.page-header
+      h1 Print@CU
+
+    - if flash[:notice]
+      .alert-message.success.fade.in data-alert="alert"
+        a.close href="#" ×
+        p
+          == flash[:notice]
+    - elsif flash[:error]
+      .alert-message.error.fade.in data-alert="alert"
+        a.close href="#" ×
+        p
+          == flash[:error]
+
+    = form_for @print do |f|
+      #main.row
+        .span4.choice-span
+          .clearfix
+            = f.label("building")
+            = f.select("building", $buildings.sort)
+          .clearfix
+            = f.label("printer")
+            = f.select("printer", $printers[$buildings.sort.first], {})
+        .span2.divider &raquo;
+        .span4.file-span
+          = f.file_field("document")
+        .span2.divider &raquo;
+        .span4.print-span
+          = f.submit("Print", :class => "btn large primary")
+          ul.inputs-list
+            li
+              label for="print_collate"
+                = f.check_box :collate
+                span Collated?
+            li
+              label for="print_double_sided"
+                = f.check_box :double_sided
+                span Double-sided?                
+            li
+              label for="print_copies"
+                span Number Of Copies: 
+                = f.text_field :copies, :class => "span1", :placeholder => 1, :size => 2, :maxlength => 2
+
+  footer
+    p
+      '&copy;
+      =' mail_to "sia2111@columbia.edu", "Sam Aarons", :encode => "hex"
+      | 2011
+    p
+      #credits
+        a href="http://github.com/saarons" saarons
+        |  && 
+        a href="http://www.zx2c4.com" zx2c4

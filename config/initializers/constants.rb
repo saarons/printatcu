@@ -1,0 +1,22 @@
+DIRECT_EXTENSIONS = %w(.pdf .eps .ps)
+GOOGLE_EXTENSIONS = %w(.odt .ods .doc .docx .xls .xlsx .ppt .pptx .pages .ai .psd .tiff .dxf .svg)
+
+SPLIT_LOCATIONS = {
+  "Residence Halls" => {
+    "Carman"      => /^carman/,
+    "Broadway"    => /^broadway/,
+    "Claremont"   => /^claremont/,
+    "East Campus" => /^ec/,
+    "Furnald"     => /^furnald/,
+    "Harmony"     => /^harmony/,
+    "Hartley"     => /^hartley/,
+    "McBain"      => /^mcbain/,
+    "Nussbaum"    => /^six00w/,
+    "River"       => /^river/,
+    "Ruggles"     => /^ruggles/,
+    "Schapiro"    => /^schapiro/,
+    "Watt"        => /^watt/,
+    "Wien"        => /^wien/,
+    "Woodbridge"  => /^woodbridge/
+  }
+}
