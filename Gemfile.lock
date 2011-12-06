@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/saarons/shinobi.git
+  revision: a5300d7bfbde64fafdbd974e197acc7fcc272e7a
+  specs:
+    shinobi (0.0.8)
+      cups
+      multi_json
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -47,6 +55,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.1.3)
+    cups (0.0.7)
     dalli (1.1.3)
     erubis (2.7.0)
     excon (0.7.8)
@@ -167,6 +176,7 @@ DEPENDENCIES
   redis
   resque
   sass-rails (~> 3.1.4)
+  shinobi!
   slim
   uglifier (>= 1.0.3)
   unicorn
