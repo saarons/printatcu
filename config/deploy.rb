@@ -40,6 +40,12 @@ task :symlink_uploads_folder, :roles => :app do
 end
 after "deploy:update_code", :symlink_uploads_folder
 
+task :symlink_db, :roles => :app do
+  run "mkdir -p #{shared_path}/config"
+  run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+end
+after "deploy:update_code", :symlink_db
+
 namespace :foreman do
   desc "Export the Procfile to Ubuntu's upstart scripts"
   task :export, :roles => :app do
