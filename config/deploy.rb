@@ -40,8 +40,9 @@ task :symlink_uploads_folder, :roles => :app do
 end
 after "deploy:update_code", :symlink_uploads_folder
 
-task :symlink_db, :roles => :app do
+task :symlink_db, :roles => :db do
   run "mkdir -p #{shared_path}/config"
+  upload "config/database.yml", "#{shared_path}/config/database.yml", :via => :scp, :mode => 0600
   run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 end
 after "deploy:update_code", :symlink_db
