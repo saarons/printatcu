@@ -44,11 +44,6 @@ butler403a:
   :driver: HP LaserJet 9050 PS
   :location: Butler
   :double_sided: true
-butler403b:
-  :host: butler403b-ninja.atg.columbia.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Butler
-  :double_sided: true
 carman103a:
   :host: carman103a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
@@ -143,11 +138,6 @@ lewisohn300b:
   :host: lewisohn300b-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
   :location: Lewisohn
-  :double_sided: true
-math407a:
-  :host: math407a-ninja.atg.columbia.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Math
   :double_sided: true
 mcbain100a:
   :host: mcbain100a-ninja.atg.columbia.edu
@@ -419,11 +409,6 @@ burke300a:
   :driver: HP LaserJet 4350 Series PS
   :location: Burke
   :double_sided: true
-butler301a:
-  :host: butler301a-ninja.atg.columbia.edu
-  :driver: HP LaserJet 4350 Series PS
-  :location: Butler
-  :double_sided: true
 butler305a:
   :host: butler305a-ninja.atg.columbia.edu
   :driver: HP LaserJet 4350 Series PS
@@ -436,11 +421,6 @@ butler401a:
   :double_sided: true
 butler501a:
   :host: butler501a-ninja.atg.columbia.edu
-  :driver: HP LaserJet 4350 Series PS
-  :location: Butler
-  :double_sided: true
-butler600a:
-  :host: butler600a-ninja.atg.columbia.edu
   :driver: HP LaserJet 4350 Series PS
   :location: Butler
   :double_sided: true
@@ -464,18 +444,8 @@ iab215a:
   :driver: HP LaserJet 4200 PS
   :location: International Affairs
   :double_sided: true
-iab309a:
-  :host: iab309a-ninja.atg.columbia.edu
-  :driver: HP LaserJet 4050 Series PS
-  :location: International Affairs
-  :double_sided: false
 iab310a:
   :host: iab310a-ninja.atg.columbia.edu
-  :driver: HP LaserJet 9050 PS
-  :location: International Affairs
-  :double_sided: true
-iab329a:
-  :host: iab329a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
   :location: International Affairs
   :double_sided: true
@@ -549,11 +519,6 @@ uris130d:
   :driver: HP LaserJet 9050 PS
   :location: Uris
   :double_sided: true
-ccsa:
-  :host: ccsa-ninja.atg.columbia.edu
-  :driver: HP LaserJet 8100 Series PS
-  :location: Career Services
-  :double_sided: true
 dodgeart412a:
   :host: dodgeart412a-ninja.atg.columbia.edu
   :driver: HP LaserJet 4250 PS
@@ -597,11 +562,6 @@ socialwork309a:
 socialwork401a:
   :host: socialwork401a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9000 Series PS
-  :location: Social Work
-  :double_sided: true
-socialwork403a:
-  :host: socialwork403a-ninja.atg.columbia.edu
-  :driver: HP LaserJet 8150 Series PS
   :location: Social Work
   :double_sided: true
 socialwork721a:
