@@ -8,11 +8,15 @@
         a.close href="#" ×
         p
           == flash[:notice]
-    - elsif flash[:error]
-      .alert-message.error.fade.in data-alert="alert"
+    - elsif @print.errors.any?
+      .alert-message.block-message.error data-alert="alert"
         a.close href="#" ×
         p
-          == flash[:error]
+          strong Something Bad Happened
+        ul
+          - @print.errors.full_messages.each do |msg|
+            li
+              = msg
 
     = form_for @print do |f|
       #main.row

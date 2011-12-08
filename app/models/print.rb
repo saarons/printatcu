@@ -2,7 +2,7 @@ require "execjs"
 
 class Print < ActiveRecord::Base
   validates_inclusion_of :double_sided, :collate, :in => [true, false]
-  validates_presence_of :building, :printer, :filename, :tempfile, :user, :copies
+  validates_presence_of :building, :printer, :filename, :user, :copies
   validates_numericality_of :copies, :greater_than_or_equal_to => 1, :less_than => 100, :only_integer => true
   
   attr_protected :filename, :tempfile, :user
@@ -49,7 +49,7 @@ class Print < ActiveRecord::Base
   end
   
   def validate_extension
-    errors.add(:filename, "must end with a valid extension") unless filename && (DIRECT_EXTENSIONS + GOOGLE_EXTENSIONS).include?(extension)
+    errors.add(:filename, "must end with a valid extension (#{ALL_EXTENSIONS.join(", ")})") unless filename && ALL_EXTENSIONS.include?(extension)
   end
   
   def move_file
