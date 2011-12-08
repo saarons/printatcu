@@ -23,10 +23,10 @@
         .span4.choice-span
           .clearfix
             = f.label("building")
-            = f.select("building", $buildings.sort)
+            = f.select("building", buildings)
           .clearfix
             = f.label("printer")
-            = f.select("printer", $printers[$buildings.sort.first], {})
+            = f.select("printer", default_printer, {})
         .span2.divider &raquo;
         .span4.file-span
           = f.file_field("document")
