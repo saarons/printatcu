@@ -20,7 +20,7 @@ class Print < ActiveRecord::Base
     options_array = options.map { |k,v| v ? ["-o", "#{k}=#{v}"] : ["-o", "#{k}"] }.flatten
     
     path = Rails.root.join("public/uploads", tempfile).to_s
-    command_array = ["lp", "-t", filename, "-d", printer, "-U", user, "-n", copies.to_s].concat(options_array) << "--" << path
+    command_array = ["lp", "-E", "-t", filename, "-d", printer, "-U", user, "-n", copies.to_s].concat(options_array) << "--" << path
     puts "Running #{command_array}"
     IO.popen(command_array) { |f| puts "lp: #{f.gets}" }
   end
