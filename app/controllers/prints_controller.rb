@@ -21,7 +21,7 @@ class PrintsController < ApplicationController
     respond_to do |format|
       if success = @print.save
         Resque.enqueue(PrintWorker, @print.id)
-        flash[:notice] = "Your document has successfully been sent to <strong>#{@print.printer}</strong> under the pseudonym \"<strong>#{@print.user}</strong>\"."
+        flash[:notice] = "Your document has been successfully sent to <strong>#{@print.printer}</strong> under the pseudonym \"<strong>#{@print.user}</strong>\"."
         format.html { redirect_to root_path(success: success) }
       else
         format.html { render action: "index" }
