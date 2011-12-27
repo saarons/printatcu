@@ -12,7 +12,7 @@ class Document < ActiveRecord::Base
       transition [:uploaded, :converted] => :printed
     end
     
-    after_transition :on => :dispatch do |document, transition|
+    before_transition :on => :dispatch do |document, transition|
       options = {"HPOption_Duplexer" => "True", "HPOption_2000_Sheet_Tray" => "True", "InstalledMemory" => "128-255MB"}
 
       options.merge!("sides" => "two-sided-long-edge") if document.print.double_sided
@@ -30,7 +30,7 @@ class Document < ActiveRecord::Base
       transition :uploaded => :converted
     end
     
-    after_transition :on => :convert do |document, transition|
+    before_transition :on => :convert do |document, transition|
       url = "http://printatcu.com/uploads/#{document.tempfile}"
       response = Excon.get("https://docs.google.com/viewer", :query => {:url => url})
       pdf_url = ExecJS.eval(response.body[/gpUrl:('[^']*')/,1])
