@@ -4,12 +4,14 @@ class PrintWorker
   def self.perform(print_id)
     print = Print.find(print_id)
     
-    ok = if print.needs_conversion?
-      print.convert
-    else
-      true
+    print.documents.each do |document|
+      ok = if document.needs_conversion?
+        document.convert
+      else
+        true
+      end
+
+      document.print if ok
     end
-    
-    print.print if ok
   end
 end

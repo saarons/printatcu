@@ -3,11 +3,11 @@
     header.page-header
       h1 Print@CU
 
-    - if flash[:notice]
+    - if flash[:printer] && flash[:user]
       .alert-message.success.fade.in data-alert="alert"
         a.close href="#" ×
         p
-          == flash[:notice]
+          == "Your document has been successfully sent to <strong>#{flash[:printer]}</strong> under the pseudonym \"<strong>#{flash[:user]}</strong>\"."
     - elsif @print.errors.any?
       .alert-message.block-message.error data-alert="alert"
         a.close href="#" ×
@@ -29,7 +29,7 @@
             = f.select("printer", default_printer, {})
         .span2.divider &raquo;
         .span4.file-span
-          = f.file_field("document")
+          = f.file_field("documents")
         .span2.divider &raquo;
         .span4.print-span
           = f.submit("Print", :class => "btn large primary")

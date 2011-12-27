@@ -10,18 +10,21 @@ class PrintsController < ApplicationController
   end
   
   def create
-    document = params[:print].delete(:document)
+    documents = Array.wrap(params[:print].delete(:documents))
     params[:print][:copies] = 1 if params[:print][:copies].blank?
     
     @print = Print.new(params[:print])
     @print.user = $redis.srandmember("users")
-    @print.filename = document.try(:original_filename)
-    @print.tempfile = document.try(:tempfile).try(:path)
+    
+    documents.each do |document|
+      @print.documents.build(filename: document.try(:original_filename), tempfile: document.try(:tempfile).try(:path))
+    end
 
     respond_to do |format|
       if success = @print.save
         Resque.enqueue(PrintWorker, @print.id)
-        flash[:notice] = "Your document has been successfully sent to <strong>#{@print.printer}</strong> under the pseudonym \"<strong>#{@print.user}</strong>\"."
+        flash[:user] = @print.user
+        flash[:printer] = @print.printer
         format.html { redirect_to root_path(success: success) }
       else
         format.html { render action: "index" }
