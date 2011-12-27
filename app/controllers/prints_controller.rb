@@ -17,7 +17,9 @@ class PrintsController < ApplicationController
     @print.user = $redis.srandmember("users")
     
     documents.each do |document|
-      @print.documents.build(filename: document.try(:original_filename), tempfile: document.try(:tempfile).try(:path))
+      doc = @print.documents.build
+      doc.filename = document.try(:original_filename)
+      doc.tempfile = document.try(:tempfile).try(:path)
     end
 
     respond_to do |format|

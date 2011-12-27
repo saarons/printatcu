@@ -29,7 +29,7 @@
             = f.select("printer", default_printer, {})
         .span2.divider &raquo;
         .span4.file-span
-          = f.file_field("documents")
+          = f.file_field("documents", :multiple => true)
         .span2.divider &raquo;
         .span4.print-span
           = f.submit("Print", :class => "btn large primary")

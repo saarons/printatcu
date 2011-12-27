@@ -5,13 +5,11 @@ class PrintWorker
     print = Print.find(print_id)
     
     print.documents.each do |document|
-      ok = if document.needs_conversion?
-        document.convert
-      else
-        true
+      unless document.printed?
+        ok = document.needs_conversion? ? document.convert : true
+        document.dispatch if ok
+        document.save
       end
-
-      document.print if ok
     end
   end
 end
