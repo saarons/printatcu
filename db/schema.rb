@@ -11,13 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111117045237) do
+ActiveRecord::Schema.define(:version => 20111227004325) do
+
+  create_table "documents", :force => true do |t|
+    t.integer  "print_id"
+    t.string   "filename"
+    t.string   "tempfile"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "prints", :force => true do |t|
     t.string   "building"
     t.string   "printer"
-    t.string   "filename"
-    t.string   "tempfile"
     t.string   "user"
     t.boolean  "double_sided"
     t.datetime "created_at"
