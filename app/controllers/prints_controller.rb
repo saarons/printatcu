@@ -30,6 +30,8 @@ class PrintsController < ApplicationController
         
         flash[:user] = @print.user
         flash[:printer] = @print.printer
+        flash[:multiple] = documents.size > 1
+        
         format.html { redirect_to root_path(success: success) }
       else
         format.html { render action: "index" }

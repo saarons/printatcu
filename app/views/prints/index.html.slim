@@ -7,7 +7,7 @@
       .alert-message.success.fade.in data-alert="alert"
         a.close href="#" ×
         p
-          == "Your document has been successfully sent to <strong>#{flash[:printer]}</strong> under the pseudonym \"<strong>#{flash[:user]}</strong>\"."
+          = success_message
     - elsif @print.errors.any?
       .alert-message.block-message.error data-alert="alert"
         a.close href="#" ×
