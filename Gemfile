@@ -8,7 +8,6 @@ gem "mysql2"
 gem "airbrake"
 gem "capistrano"
 gem "jquery-rails"
-gem "state_machine"
 gem "rails", "3.1.3"
 gem "foreman", :require => false
 gem "resque", :require => ["resque", "resque/server"]

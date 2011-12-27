@@ -7,40 +7,30 @@ class Document < ActiveRecord::Base
   
   before_create :move_file
   
-  state_machine :status, :initial => :uploaded do    
-    event :dispatch do
-      transition [:uploaded, :converted] => :printed
-    end
-    
-    before_transition :on => :dispatch do |document, transition|
-      options = {"HPOption_Duplexer" => "True", "HPOption_2000_Sheet_Tray" => "True", "InstalledMemory" => "128-255MB"}
+  def convert
+    url = "http://printatcu.com/uploads/#{document.tempfile}"
+    response = Excon.get("https://docs.google.com/viewer", :query => {:url => url})
+    pdf_url = ExecJS.eval(response.body[/gpUrl:('[^']*')/,1])
+    cookie_jar = Tempfile.new("cookie_jar")
+    output_file = Rails.root.join("public/uploads", tempfile).to_s
+    command = ["curl", "-s", "-L", "-c", cookie_jar.path, "-o", output_file, pdf_url]
+    puts "Running #{command}"
+    IO.popen(command) { |f| puts "curl: #{f.gets}" }
+    cookie_jar.close!
+  end
+  
+  def enqueue
+    options = {"HPOption_Duplexer" => "True", "HPOption_2000_Sheet_Tray" => "True", "InstalledMemory" => "128-255MB"}
 
-      options.merge!("sides" => "two-sided-long-edge") if document.print.double_sided
-      options.merge!("Collate" => "True") if document.print.collate
+    options.merge!("sides" => "two-sided-long-edge") if print.double_sided
+    options.merge!("Collate" => "True") if print.collate
 
-      options_array = options.map { |k,v| v ? ["-o", "#{k}=#{v}"] : ["-o", "#{k}"] }.flatten
+    options_array = options.map { |k,v| v ? ["-o", "#{k}=#{v}"] : ["-o", "#{k}"] }.flatten
 
-      path = Rails.root.join("public/uploads", document.tempfile).to_s
-      command_array = ["lp", "-E", "-t", document.filename, "-d", document.print.printer, "-U", document.print.user, "-n", document.print.copies.to_s].concat(options_array) << "--" << path
-      puts "Running #{command_array}"
-      IO.popen(command_array) { |f| puts "lp: #{f.gets}" }
-    end
-    
-    event :convert do
-      transition :uploaded => :converted
-    end
-    
-    before_transition :on => :convert do |document, transition|
-      url = "http://printatcu.com/uploads/#{document.tempfile}"
-      response = Excon.get("https://docs.google.com/viewer", :query => {:url => url})
-      pdf_url = ExecJS.eval(response.body[/gpUrl:('[^']*')/,1])
-      cookie_jar = Tempfile.new("cookie_jar")
-      output_file = Rails.root.join("public/uploads", document.tempfile).to_s
-      command = ["curl", "-s", "-L", "-c", cookie_jar.path, "-o", output_file, pdf_url]
-      puts "Running #{command}"
-      IO.popen(command) { |f| puts "curl: #{f.gets}" }
-      cookie_jar.close!
-    end
+    path = Rails.root.join("public/uploads", tempfile).to_s
+    command_array = ["lp", "-E", "-t", filename, "-d", print.printer, "-U", print.user, "-n", print.copies.to_s].concat(options_array) << "--" << path
+    puts "Running #{command_array}"
+    IO.popen(command_array) { |f| puts "lp: #{f.gets}" }
   end
   
   def needs_conversion?

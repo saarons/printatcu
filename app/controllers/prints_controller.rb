@@ -24,7 +24,10 @@ class PrintsController < ApplicationController
 
     respond_to do |format|
       if success = @print.save
-        Resque.enqueue(PrintWorker, @print.id)
+        @print.document_ids.each do |id|
+          Resque.enqueue(PrintWorker, id)
+        end
+        
         flash[:user] = @print.user
         flash[:printer] = @print.printer
         format.html { redirect_to root_path(success: success) }
