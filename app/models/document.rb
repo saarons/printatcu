@@ -8,7 +8,7 @@ class Document < ActiveRecord::Base
   before_create :move_file
   
   def convert
-    url = "http://printatcu.com/uploads/#{document.tempfile}"
+    url = "http://printatcu.com/uploads/#{tempfile}"
     response = Excon.get("https://docs.google.com/viewer", :query => {:url => url})
     pdf_url = ExecJS.eval(response.body[/gpUrl:('[^']*')/,1])
     cookie_jar = Tempfile.new("cookie_jar")
