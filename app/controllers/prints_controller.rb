@@ -10,7 +10,7 @@ class PrintsController < ApplicationController
   end
   
   def create
-    documents = Array.wrap(params[:print].delete(:documents))
+    documents = params[:print].delete(:documents) || []
     params[:print][:copies] = 1 if params[:print][:copies].blank?
     
     @print = Print.new(params[:print])
@@ -29,8 +29,8 @@ class PrintsController < ApplicationController
         end
         
         flash[:user] = @print.user
+        flash[:count] = documents.size
         flash[:printer] = @print.printer
-        flash[:multiple] = documents.size > 1
         
         format.html { redirect_to root_path(success: success) }
       else

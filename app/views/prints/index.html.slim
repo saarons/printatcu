@@ -7,12 +7,13 @@
       .alert-message.success.fade.in data-alert="alert"
         a.close href="#" ×
         p
-          = success_message
+          = t("success.html", :count => flash[:count], :printer => flash[:printer], :user => flash[:user])
     - elsif @print.errors.any?
       .alert-message.block-message.error data-alert="alert"
         a.close href="#" ×
         p
-          strong Something Bad Happened
+          strong
+            = t(:something_bad_happened)
         ul
           - @print.errors.full_messages.each do |msg|
             li
@@ -32,27 +33,31 @@
           = f.file_field("documents", :multiple => true)
         .span2.divider &raquo;
         .span4.print-span
-          = f.submit("Print", :class => "btn large primary")
+          = f.submit(:class => "btn large primary")
           ul.inputs-list
-            li
+            li              
               label for="print_collate"
                 = f.check_box :collate
-                span Collated?
+                span
+                  = t("helpers.label.print.collate")
             li
               label for="print_double_sided"
                 = f.check_box :double_sided
-                span Double-sided?                
+                span
+                  = t("helpers.label.print.double_sided")
             li
               label for="print_copies"
-                span Number Of Copies: 
+                span
+                  =' t("helpers.label.print.copies")
                 = f.text_field :copies, :class => "span1", :placeholder => 1, :size => 2, :maxlength => 2
 
   footer
-    p#disclaimer Please be aware that when your document is pushed from this server to the Columbia printers, we cannot guarantee the security or privacy of your document.
+    p#disclaimer
+      = t(:disclaimer)
     p
       '&copy;
       =' mail_to "sia2111@columbia.edu", "Sam Aarons", :encode => "hex"
-      | 2011
+      = Time.zone.now.strftime("%Y")
     p
       #credits
         a href="http://github.com/saarons" saarons

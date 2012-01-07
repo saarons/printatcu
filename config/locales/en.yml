@@ -1,5 +1,28 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+    helpers:
+        submit:
+            print:
+                create: "Print"
+        label:
+            print:
+                printer: "Printer"
+                building: "Building"
+                collate: "Collated?"
+                copies: "Number Of Copies:"
+                double_sided: "Double-sided?"
+    errors:
+        messages:
+            no_documents: "are needed for printing"
+            unable_to_print: "%{filename} can't be printed"
+            invalid_extension: "must end with a valid extension (%{list})"
+            
+    something_bad_happened: "Something Bad Happened"
+    success:
+        html:
+            one:
+                "Your document has been successfully sent to <strong>%{printer}</strong> under the pseudonym \"<strong>%{user}</strong>\"."
+            other:
+                "Your documents have been successfully sent to <strong>%{printer}</strong> under the pseudonym \"<strong>%{user}</strong>\"."
+          
+    disclaimer:
+        "Please be aware that when your document is pushed from this server to the Columbia printers, we cannot guarantee the security or privacy of your document."
