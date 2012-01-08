@@ -4,7 +4,7 @@
       %h1 Print@CU
 
     - if flash[:printer] && flash[:user]
-      .alert-message.block-message.error{data: {"alert" => "alert"}}
+      .alert-message.block-message.success{data: {"alert" => "alert"}}
         %a.close{href: "#"} ×
         %p= t("success.html", :count => flash[:count], :printer => flash[:printer], :user => flash[:user])
     - elsif @print.errors.any?
