@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "slim"
+gem "haml"
 gem "dalli"
 gem "excon"
 gem "redis"
