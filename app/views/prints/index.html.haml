@@ -32,16 +32,16 @@
         .span4.print-span
           = f.submit(:class => "btn large primary")
           %ul.inputs-list
-            %li              
-              %label{"for" => "print_collate"}
+            %li
+              = f.label(:collate) do
                 = f.check_box :collate
                 %span= t("helpers.label.print.collate")
             %li
-              %label{"for" => "print_double_sided"}
+              = f.label(:double_sided) do
                 = f.check_box :double_sided
                 %span= t("helpers.label.print.double_sided")
             %li
-              %label{"for" => "print_copies"}
+              = f.label(:copies) do
                 %span= t("helpers.label.print.copies")
                 = f.text_field :copies, :class => "span1", :placeholder => 1, :size => 2, :maxlength => 2
 
