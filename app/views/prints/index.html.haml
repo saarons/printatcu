@@ -20,14 +20,14 @@
       #main.row
         .span4.choice-span
           .clearfix
-            = f.label("building")
-            = f.select("building", buildings)
+            = f.label(:building)
+            = f.select(:building, buildings)
           .clearfix
-            = f.label("printer")
-            = f.select("printer", default_printer, {})
+            = f.label(:printer)
+            = f.select(:printer, default_printer, {})
         .span2.divider &raquo;
         .span4.file-span
-          = f.file_field("documents", :multiple => true)
+          = f.file_field(:documents, :multiple => true)
         .span2.divider &raquo;
         .span4.print-span
           = f.submit(:class => "btn large primary")
