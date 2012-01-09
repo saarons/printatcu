@@ -21,12 +21,12 @@
         li
           label for="print_collate"
             = f.check_box :collate
-            span Collated?
+            span Collated
         li
           label for="print_double_sided"
             = f.check_box :double_sided
-            span Double-sided?
+            span Double-sided
         li
           label for="print_copies"
-            span Number Of Copies:
+            span Copies
             = f.text_field :copies, :class => "span1", :placeholder => 1, :size => 2, :maxlength => 2
