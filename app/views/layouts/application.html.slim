@@ -1,12 +1,9 @@
 doctype html
 html
-  head
-    title Print@CU
-    = stylesheet_link_tag "application"
-    link href="//fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css"
-    = javascript_include_tag "application"
-    = csrf_meta_tags
-    javascript:
-      var printers = #{$printers.to_json.html_safe};
+  = render "application/head"
   body
-    = yield
+    .container
+      .content
+        = render "application/header"
+        = yield
+      = render "application/footer"
