@@ -10,7 +10,7 @@ body, #main label, #main input, #main select {
   height: 400px;
 }
 
-.divider, .choice-span, .file-span, .print-span {
+.col {
   top: 50%;
   position: relative;
 }
@@ -60,10 +60,36 @@ footer p a:hover {
 }
 
 #print_copies {
-    margin-left: 4px;
+  margin-left: 4px;
 }
 
 #disclaimer {
-    font-size: 8pt;
+  font-size: 8pt;
 	color: #BBBBBB;
 }
+
+input,
+input::-webkit-input-placeholder,
+input:-moz-placeholder {
+  color: #404040
+}
+
+@media only screen and (max-width: 959px) {
+  .container {
+    width: 90%;
+  }
+  .row > [class*="span"] {
+    display: block;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .col {
+    margin-top: 7.5% !important;
+    top: 0;
+  }
+  .divider {
+    display: none !important;
+  }
+}
+

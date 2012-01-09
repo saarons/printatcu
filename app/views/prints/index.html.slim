@@ -1,17 +1,21 @@
 = form_for @print do |f|
   #main.row
-    .span4.choice-span
+    .col.span4.choice-span
       .clearfix
         = f.label("building")
         = f.select("building", buildings)
       .clearfix
         = f.label("printer")
         = f.select("printer", default_printer, {})
-    .span2.divider &raquo;
-    .span4.file-span
+
+    .col.span2.divider &raquo;
+
+    .col.span4.file-span
       = f.file_field("documents", :multiple => true)
-    .span2.divider &raquo;
-    .span4.print-span
+
+    .col.span2.divider &raquo;
+
+    .col.span4.print-span
       = f.submit("Print", :class => "btn large primary")
       ul.inputs-list
         li
