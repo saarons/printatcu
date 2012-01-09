@@ -1,10 +1,10 @@
-doctype html
-html
+!!! 5
+%html
   = render "application/head"
-  body
+  %body
     .container
       .content
         = render "application/header"
         = yield
-      = render "application/footer"
+        = render "application/footer"
     = javascript_include_tag "application"

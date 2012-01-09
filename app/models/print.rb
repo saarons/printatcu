@@ -10,14 +10,14 @@ class Print < ActiveRecord::Base
   
   private
   def validate_documents
-    errors.add(:documents, "are needed for printing") if documents.empty?
+    errors.add(:documents, :no_documents) if documents.empty?
     invalid = false
     documents.each do |document|
       unless ALL_EXTENSIONS.include?(document.extension)
-        errors.add(:base, "#{document.filename} can't be printed") 
+        errors.add(:base, :unable_to_print, :filename => document.filename)
         invalid = true
       end
     end
-    errors.add(:documents, "must end with a valid extension (#{ALL_EXTENSIONS.join(", ")})") if invalid
+    errors.add(:documents, :invalid_extension, :list => ALL_EXTENSIONS.join(", ")) if invalid
   end
 end

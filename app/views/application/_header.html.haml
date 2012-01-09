@@ -1,0 +1,16 @@
+%header.page-header
+  %h1 Print@CU
+
+- if flash[:printer] && flash[:user]
+  .alert-message.block-message.success{data: {"alert" => "alert"}}
+    %a.close{href: "#"} &times;
+    %p= t("success.html", :count => flash[:count], :printer => flash[:printer], :user => flash[:user])
+- elsif @print.errors.any?
+  .alert-message.block-message.error{data: {"alert" => "alert"}}
+    %a.close{href: "#"} &times;
+    %p
+      %strong= t(:something_bad_happened)
+    %ul
+      - @print.errors.full_messages.each do |msg|
+        %li= msg
+

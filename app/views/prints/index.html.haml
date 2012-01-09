@@ -1,0 +1,28 @@
+= form_for @print do |f|
+  #main.row
+    .col.span4.choice-span
+      .clearfix
+        = f.label(:building)
+        = f.select(:building, buildings)
+      .clearfix
+        = f.label(:printer)
+        = f.select(:printer, default_printer, {})
+    .col.span2.divider &raquo;
+    .col.span4.file-span
+      = f.file_field(:documents, :multiple => true)
+    .col.span2.divider &raquo;
+    .col.span4.print-span
+      = f.submit(:class => "btn large primary")
+      %ul.inputs-list
+        %li
+          = f.label(:collate) do
+            = f.check_box :collate
+            %span= t("helpers.label.print.collate")
+        %li
+          = f.label(:double_sided) do
+            = f.check_box :double_sided
+            %span= t("helpers.label.print.double_sided")
+        %li
+          = f.label(:copies) do
+            %span= t("helpers.label.print.copies")
+            = f.text_field :copies, :class => "span1", :placeholder => 1, :size => 2, :maxlength => 2

@@ -1,0 +1,9 @@
+%head
+  %meta{charset: "utf-8"}
+  %title Print@CU
+  = stylesheet_link_tag "application"
+  %link{href: "//fonts.googleapis.com/css?family=Ubuntu", rel: "stylesheet", type: "text/css"}
+  = csrf_meta_tags
+  :javascript
+    var printers = #{$printers.to_json.html_safe};
+

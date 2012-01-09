@@ -1,8 +1,11 @@
 configuration_file = YAML.load(File.open(File.expand_path("../../printers.yml", __FILE__)))
-buildings = configuration_file.inject(Set.new) {|memo, obj| memo << obj[1][:location] }
-buildings.delete_if { |b| SPLIT_LOCATIONS.has_key?(b) }
 
-printers = buildings.inject({}) { |memo, obj| memo.merge(obj => []) }
+buildings = configuration_file.inject(Set.new) do |set, printer|
+  location = printer[1][:location]
+  SPLIT_LOCATIONS.has_key?(location) ? set : (set << location)
+end
+
+printers = Hash[buildings.map { |b| [b, []] }]
 SPLIT_LOCATIONS.values.map(&:keys).flatten.each { |split_location| printers[split_location] = [] }
 
 configuration_file.each do |k, v|

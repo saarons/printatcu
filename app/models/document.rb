@@ -12,6 +12,7 @@ class Document < ActiveRecord::Base
     response = Excon.get("https://docs.google.com/viewer", :query => {:url => url})
     pdf_url = ExecJS.eval(response.body[/gpUrl:('[^']*')/,1])
     cookie_jar = Tempfile.new("cookie_jar")
+    self.tempfile = converted_tempfile
     output_file = Rails.root.join("public/uploads", tempfile).to_s
     command = ["curl", "-s", "-L", "-c", cookie_jar.path, "-o", output_file, pdf_url]
     puts "Running #{command}"
@@ -31,6 +32,10 @@ class Document < ActiveRecord::Base
     command_array = ["lp", "-E", "-t", filename, "-d", print.printer, "-U", print.user, "-n", print.copies.to_s].concat(options_array) << "--" << path
     puts "Running #{command_array}"
     IO.popen(command_array) { |f| puts "lp: #{f.gets}" }
+  end
+  
+  def converted_tempfile
+    self.tempfile.gsub(extension, ".pdf")
   end
   
   def needs_conversion?
