@@ -249,6 +249,11 @@ dcc413a:
   :driver: HP LaserJet 9050 PS
   :location: Barnard
   :double_sided: true
+diana307a:
+  :host: diana307a-ninja.barnard.edu
+  :driver: HP LaserJet 9050 PS
+  :location: Barnard
+  :double_sided: true
 diana307b:
   :host: diana307b-ninja.barnard.edu
   :driver: HP LaserJet 9050 PS
@@ -434,6 +439,16 @@ socialwork105b:
   :driver: HP LaserJet 9050 Series PS
   :location: Social Work
   :double_sided: true
+socialwork105c:
+  :host: socialwork105c-ninja.atg.columbia.edu
+  :driver: HP LaserJet 9050 Series PS
+  :location: Social Work
+  :double_sided: true
+socialwork105d:
+  :host: socialwork105d-ninja.atg.columbia.edu
+  :driver: HP LaserJet 9050 Series PS
+  :location: Social Work
+  :double_sided: true
 socialwork105e:
   :host: socialwork105e-ninja.atg.columbia.edu
   :driver: HP LaserJet 9000 Series PS
@@ -447,6 +462,11 @@ socialwork214a:
 socialwork309a:
   :host: socialwork309a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 Series PS
+  :location: Social Work
+  :double_sided: true
+socialwork401a:
+  :host: socialwork401a-ninja.atg.columbia.edu
+  :driver: HP LaserJet 9000 Series PS
   :location: Social Work
   :double_sided: true
 socialwork721a:
