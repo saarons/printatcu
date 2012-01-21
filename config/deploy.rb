@@ -45,7 +45,7 @@ task :symlink_db, :roles => :db do
   upload "config/database.yml", "#{shared_path}/config/database.yml", :via => :scp, :mode => 0600
   run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 end
-after "deploy:update_code", :symlink_db
+after "deploy:finalize_update", :symlink_db
 
 namespace :foreman do
   desc "Export the Procfile to Ubuntu's upstart scripts"
