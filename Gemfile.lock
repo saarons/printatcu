@@ -160,7 +160,7 @@ PLATFORMS
 DEPENDENCIES
   airbrake
   capistrano
-  coffee-rails
+  coffee-rails (~> 3.2.1)
   dalli
   excon
   foreman
@@ -170,7 +170,7 @@ DEPENDENCIES
   rails (= 3.2.0)
   redis
   resque
-  sass-rails
+  sass-rails (~> 3.2.3)
   shinobi!
-  uglifier
+  uglifier (>= 1.0.3)
   unicorn
