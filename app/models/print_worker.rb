@@ -5,5 +5,6 @@ class PrintWorker
     document = Document.find(document_id)
     ok = document.needs_conversion? ? document.convert : true
     document.enqueue if ok
+    document.cleanup
   end
 end

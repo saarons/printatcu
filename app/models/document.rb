@@ -11,13 +11,19 @@ class Document < ActiveRecord::Base
     url = "http://printatcu.com/uploads/#{tempfile}"
     response = Excon.get("https://docs.google.com/viewer", :query => {:url => url})
     pdf_url = ExecJS.eval(response.body[/gpUrl:('[^']*')/,1])
-    cookie_jar = Tempfile.new("cookie_jar")
-    self.tempfile = converted_tempfile
-    output_file = Rails.root.join("public/uploads", tempfile).to_s
-    command = ["curl", "-s", "-L", "-c", cookie_jar.path, "-o", output_file, pdf_url]
-    puts "Running #{command}"
-    IO.popen(command) { |f| puts "curl: #{f.gets}" }
-    cookie_jar.close!
+    
+    if pdf_url
+      cookie_jar = Tempfile.new("cookie_jar")
+      self.tempfile = converted_tempfile
+      output_file = Rails.root.join("public/uploads", tempfile).to_s
+      command = ["curl", "-s", "-L", "-c", cookie_jar.path, "-o", output_file, pdf_url]
+      puts "Running #{command}"
+      IO.popen(command) { |f| puts "curl: #{f.gets}" }
+      cookie_jar.close!
+      return true
+    else
+      false
+    end
   end
   
   def enqueue
@@ -29,9 +35,18 @@ class Document < ActiveRecord::Base
     options_array = options.map { |k,v| v ? ["-o", "#{k}=#{v}"] : ["-o", "#{k}"] }.flatten
 
     path = Rails.root.join("public/uploads", tempfile).to_s
-    command_array = ["lp", "-E", "-t", filename, "-d", print.printer, "-U", print.user, "-n", print.copies.to_s].concat(options_array) << "--" << path
+    command_array = ["lp", "-c", "-E", "-t", filename, "-d", print.printer, "-U", print.user, "-n", print.copies.to_s].concat(options_array) << "--" << path
     puts "Running #{command_array}"
     IO.popen(command_array) { |f| puts "lp: #{f.gets}" }
+  end
+  
+  def cleanup
+    files = [Rails.root.join("public/uploads", tempfile)]
+    files << Rails.root.join("public/uploads", tempfile_was) if tempfile_changed?
+    
+    puts "Cleaning #{files}"
+    
+    FileUtils.rm files
   end
   
   def converted_tempfile
