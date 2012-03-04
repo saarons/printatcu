@@ -8,7 +8,7 @@ gem "mysql2"
 gem "airbrake"
 gem "capistrano"
 gem "jquery-rails"
-gem "rails", "3.2.0"
+gem "rails", "3.2.2"
 gem "foreman", :require => false
 gem "resque", :require => ["resque", "resque/server"]
 gem "shinobi", :git => "git://github.com/saarons/shinobi.git"
