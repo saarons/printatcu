@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+require File.expand_path("../../config/environment",  __FILE__)
+
+users = ["Will Smith", "Oprah Winfrey", "Natalie Portman", "Johnny Depp",
+         "Mariska Hargitay", "Lionel Messi", "Alex Rodriguez", "Tom Hanks",
+         "Peyton Manning", "Beyonce Knowles", "Jay-Z", "Rush Limbaugh",
+         "Simon Cowell", "Cameron Diaz", "Hugh Laurie", "Robert Pattinson",
+         "Maria Sharapova", "Mark Burnett", "Elton John", "Kobe Bryant",
+         "Phil Mickelson", "Dr. Phil Mcgraw", "Toby Keith", "David Letterman",
+         "Larry The Cable Guy", "Jeff Dunham", "Muse", "Brad Pitt",
+         "Roger Federer", "Heidi Klum", "Bethenny Frankel", "Serena Williams",
+         "Robert Downey Jr", "Sandra Bullock", "Lil Wayne", "Derek Jeter",
+         "Justin Bieber", "Glenn Beck", "Sean Diddy Combs", "Dwyane Wade",
+         "Donald Trump", "Tim Mcgraw", "James Patterson", "Brad Paisley",
+         "LeBron James", "Angelina Jolie", "David Beckham", "Dick Wolf",
+         "Jerry Seinfeld", "Sarah Jessica Parker", "Eva Longoria",
+         "Ray Romano", "Danielle Steel", "Kanye West", "Eminem",
+         "Cristiano Ronaldo", "Jerry Bruckheimer", "Ellen DeGeneres",
+         "Tyler Perry", "Tom Brady", "Christopher Nolan", "Taylor Swift",
+         "Katy Perry", "Danica Patrick", "Mark Harmon", "Teri Hatcher",
+         "Ryan Seacrest", "James Cameron", "Reese Witherspoon", "Julia Roberts",
+         "Bon Jovi", "Mark Wahlberg", "Jennifer Lopez", "Adam Sandler", "Leonardo Dicaprio",
+         "Gisele Bundchen", "Stephen King", "Katherine Heigl", "Kate Moss", "Usher", "Tiger Woods",
+         "U2", "Stephenie Meyer", "Courteney Cox", "Kristen Stewart", "Charlie Sheen", "Rafael Nadal",
+         "Dwight Howard", "Jennifer Aniston", "Black Eyed Peas", "Tina Fey", "Howard Stern", "Steven Spielberg",
+         "Jay Leno", "Chuck Lorre", "Venus Williams", "Ben Stiller", "Paul McCartney", "Lady Gaga", "Steve Carell"]
+
+users.each do |user|
+  $redis.lpush("users", user)
+end
