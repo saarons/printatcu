@@ -109,6 +109,11 @@ iab323b:
   :driver: HP LaserJet 9050 PS
   :location: International Affairs
   :double_sided: true
+iab509a:
+  :host: iab509a-ninja.atg.columbia.edu
+  :driver: HP LaserJet P4515
+  :location: International Affairs
+  :double_sided: true
 lerner200a:
   :host: lerner200a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
@@ -138,6 +143,11 @@ lewisohn300b:
   :host: lewisohn300b-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
   :location: Lewisohn
+  :double_sided: true
+math303a:
+  :host: math303a-ninja.atg.columbia.edu
+  :driver: HP LaserJet 4350 Series PS
+  :location: Math
   :double_sided: true
 mcbain100a:
   :host: mcbain100a-ninja.atg.columbia.edu
@@ -363,11 +373,6 @@ kent300b:
   :host: kent300b-ninja.atg.columbia.edu
   :driver: HP LaserJet P4015
   :location: Kent
-  :double_sided: true
-math303a:
-  :host: math303a-ninja.atg.columbia.edu
-  :driver: HP LaserJet 4350 Series PS
-  :location: Math
   :double_sided: true
 nwcb400a:
   :host: nwcb400a-ninja.atg.columbia.edu
