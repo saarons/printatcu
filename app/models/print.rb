@@ -13,7 +13,7 @@ class Print < ActiveRecord::Base
     errors.add(:documents, :no_documents) if documents.empty?
     invalid = false
     documents.each do |document|
-      unless ALL_EXTENSIONS.include?(document.extension)
+      unless document.is_url? || ALL_EXTENSIONS.include?(document.extension)
         errors.add(:base, :unable_to_print, :filename => document.filename)
         invalid = true
       end

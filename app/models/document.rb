@@ -5,11 +5,11 @@ class Document < ActiveRecord::Base
   
   attr_protected :filename, :tempfile
   
-  before_create :move_file
+  before_create :move_file, :unless => :is_url?
   
   def convert
-    url = "http://printatcu.com/uploads/#{tempfile}"
-    response = Excon.get("https://docs.google.com/viewer", :query => {:url => url})
+    fetch_url = is_url? ? url : "http://printatcu.com/uploads/#{tempfile}"
+    response = Excon.get("https://docs.google.com/viewer", :query => {:url => fetch_url})
     pdf_url = ExecJS.eval(response.body[/gpUrl:('[^']*')/,1])
     
     if pdf_url
@@ -42,7 +42,7 @@ class Document < ActiveRecord::Base
   
   def cleanup
     files = [Rails.root.join("public/uploads", tempfile)]
-    files << Rails.root.join("public/uploads", tempfile_was) if tempfile_changed?
+    files << Rails.root.join("public/uploads", tempfile_was) if tempfile_changed? && tempfile_was
     
     puts "Cleaning #{files}"
     
@@ -50,15 +50,19 @@ class Document < ActiveRecord::Base
   end
   
   def converted_tempfile
-    self.tempfile.gsub(extension, ".pdf")
+    is_url? ? SecureRandom.hex(64) : self.tempfile.gsub(extension, ".pdf")
   end
   
   def needs_conversion?
-    GOOGLE_EXTENSIONS.include?(extension)
+    is_url? || GOOGLE_EXTENSIONS.include?(extension)
   end
   
   def extension
     File.extname(filename).downcase
+  end
+  
+  def is_url?
+    url.present?
   end
   
   private

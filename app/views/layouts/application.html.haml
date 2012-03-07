@@ -3,7 +3,6 @@
   = render "application/head"
   %body
     .container
-      .content
-        = render "application/header"
-        = yield
-        = render "application/footer"
+      = render "application/header"
+      = yield
+      = render "application/footer"

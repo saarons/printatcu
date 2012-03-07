@@ -16,10 +16,17 @@ class PrintsController < ApplicationController
     @print = Print.new(params[:print])
     @print.user = $redis.rpoplpush("users", "users")
     
-    documents.each do |document|
+    documents.reject(&:blank?).each do |document|
       doc = @print.documents.build
-      doc.filename = document.try(:original_filename)
-      doc.tempfile = document.try(:tempfile).try(:path)
+      
+      case document
+      when String
+        doc.url = document
+        doc.filename = document
+      else
+        doc.filename = document.try(:original_filename)
+        doc.tempfile = document.try(:tempfile).try(:path)
+      end
     end
 
     respond_to do |format|
