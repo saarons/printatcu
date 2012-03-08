@@ -41,7 +41,9 @@ class Document < ActiveRecord::Base
   end
   
   def cleanup
-    files = [Rails.root.join("public/uploads", tempfile)]
+    files = []
+    
+    files << Rails.root.join("public/uploads", tempfile) if tempfile
     files << Rails.root.join("public/uploads", tempfile_was) if tempfile_changed? && tempfile_was
     
     puts "Cleaning #{files}"
