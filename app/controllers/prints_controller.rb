@@ -38,6 +38,7 @@ class PrintsController < ApplicationController
         flash[:user] = @print.user
         flash[:count] = documents.size
         flash[:printer] = @print.printer
+        flash[:building] = @print.building
         
         format.html { redirect_to print_path(success: success) }
       else

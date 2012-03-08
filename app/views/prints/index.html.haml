@@ -3,10 +3,10 @@
     .col.span3.choice-span.location-options
       .clearfix
         = f.label(:building)
-        = f.select(:building, buildings)
+        = f.select(:building, buildings, :selected => choose_building)
       .clearfix
         = f.label(:printer)
-        = f.select(:printer, default_printer, {})
+        = f.select(:printer, default_printer, :selected => choose_printer)
     .col.span1.divider &raquo;
     .col.span4.file-span
       .tabbable
