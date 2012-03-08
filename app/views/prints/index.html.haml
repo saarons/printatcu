@@ -8,8 +8,8 @@
         = f.label(:printer)
         = f.select(:printer, default_printer, {})
     .col.span1.divider &raquo;
-    .col.span4
-      .tabbable.tabs-left
+    .col.span4.file-span
+      .tabbable
         %ul.nav.nav-tabs
           %li.active
             %a{href: "#1", data: {toggle: "tab"}}
@@ -25,7 +25,7 @@
           .tab-pane.active{id: "1"}
             = f.file_field(:documents, :multiple => true)
           .tab-pane{id: "2"}
-            = f.text_field(:documents, :class => "span2-half", :multiple => true, :placeholder => "Enter a URL to fetch...", value: nil)
+            = f.text_field(:documents, :class => "span4", :multiple => true, :placeholder => "Enter a URL to fetch...", value: nil)
     .col.span1.divider &raquo;
     .col.span3
       = f.submit(:class => "btn btn-primary btn-large span3")
