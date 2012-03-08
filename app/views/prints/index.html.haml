@@ -14,18 +14,17 @@
           %li.active
             %a{href: "#1", data: {toggle: "tab"}}
               %i.icon-upload
-              Upload
+              =t("helpers.label.print.upload")
           %li
             %a{href: "#2", data: {toggle: "tab"}}
               %i.icon-download-alt
-              URL
-              %span.label.label-warning
-                Beta
+              =t("helpers.label.print.url")
+              %span.label.label-warning=t("helpers.label.print.beta")
         .tab-content
           .tab-pane.active{id: "1"}
             = f.file_field(:documents, :multiple => true)
           .tab-pane{id: "2"}
-            = f.text_field(:documents, :class => "span4", :multiple => true, :placeholder => "Enter a URL to fetch...", value: nil)
+            = f.text_field(:documents, :class => "span4", :multiple => true, :placeholder => t("helpers.label.print.url_placeholder"), value: nil)
     .col.span1.divider &raquo;
     .col.span3
       = f.submit(:class => "btn btn-primary btn-large span3")
