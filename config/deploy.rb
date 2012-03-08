@@ -67,7 +67,7 @@ namespace :deploy do
   end
   
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{sudo} start #{application} || #{sudo} restart #{application}"
+    run "#{sudo} restart #{application}"
     run "kill -s USR2 `cat #{unicorn_pid}`"
     run "kill -s WINCH `cat #{unicorn_pid}.oldbin`"
     run "kill -s QUIT `cat #{unicorn_pid}.oldbin`"
