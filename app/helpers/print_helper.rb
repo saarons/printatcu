@@ -4,7 +4,11 @@ module PrintHelper
   end
   
   def choose_building
-    flash[:building].present? ? flash[:building] : nil
+    if @print.building.present?
+      @print.building
+    elsif flash[:building].present?
+      flash[:building]
+    end
   end
   
   def choose_printer
@@ -12,7 +16,7 @@ module PrintHelper
   end
   
   def default_printer
-    if @print.printer.present?
+    if @print.building.present?
       $printers[@print.building]
     elsif flash[:printer].present?
       $printers[flash[:building]]
