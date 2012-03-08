@@ -12,7 +12,11 @@ module PrintHelper
   end
   
   def choose_printer
-    flash[:printer].present? ? flash[:printer] : nil
+    if @print.printer.present?
+      @print.printer
+    elsif flash[:printer].present?
+      flash[:printer]
+    end
   end
   
   def default_printer
