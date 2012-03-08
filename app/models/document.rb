@@ -20,7 +20,7 @@ class Document < ActiveRecord::Base
       puts "Running #{command}"
       IO.popen(command) { |f| puts "curl: #{f.gets}" }
       cookie_jar.close!
-      return true
+      true
     else
       false
     end
