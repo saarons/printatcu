@@ -20,12 +20,13 @@ module PrintHelper
   end
   
   def default_printer
-    if @print.building.present?
-      $printers[@print.building]
+    building = if @print.building.present?
+      @print.building
     elsif flash[:printer].present?
-      $printers[flash[:building]]
+      flash[:building]
     else
-      $printers[buildings.first]
+      buildings.first
     end
+    $printers[building]
   end
 end
