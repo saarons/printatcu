@@ -14,7 +14,7 @@ class Document < ActiveRecord::Base
     
     if pdf_url
       cookie_jar = Tempfile.new("cookie_jar")
-      self.tempfile = converted_tempfile
+      self.tempfile = is_url? ? SecureRandom.hex(64) : converted_tempfile
       output_file = Rails.root.join("public/uploads", tempfile).to_s
       command = ["curl", "-s", "-L", "-c", cookie_jar.path, "-o", output_file, pdf_url]
       puts "Running #{command}"
@@ -52,7 +52,7 @@ class Document < ActiveRecord::Base
   end
   
   def converted_tempfile
-    is_url? ? SecureRandom.hex(64) : self.tempfile.gsub(extension, ".pdf")
+    self.tempfile.gsub(extension, ".pdf")
   end
   
   def needs_conversion?
