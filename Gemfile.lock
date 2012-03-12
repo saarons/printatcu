@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/saarons/shinobi.git
-  revision: ab2686577d6fd57e0252071b8927ef7e0514aa7c
+  revision: 8ea7ba603a9bf818feb164fbc3c829f75e590d80
   specs:
-    shinobi (0.1.6)
+    shinobi (0.1.7)
       cups
       multi_json
 
@@ -73,7 +73,7 @@ GEM
       thor (~> 0.14)
     json (1.6.5)
     kgio (2.7.2)
-    mail (2.4.1)
+    mail (2.4.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -89,7 +89,7 @@ GEM
       net-ssh (>= 1.99.1)
     polyglot (0.3.3)
     rack (1.4.1)
-    rack-cache (1.1)
+    rack-cache (1.2)
       rack (>= 0.4)
     rack-protection (1.2.0)
       rack
