@@ -58,7 +58,7 @@ after "deploy:update", "foreman:export"
 namespace :deploy do
   task :start, :roles => :app, :except => { :no_release => true } do
     sudo "start #{application}"
-    run "cd #{current_path} && #{unicorn_binary} -c #{unicorn_config} -E #{rails_env} -D"
+    run "cd #{current_path} && UNICORN_PWD=#{current_path} #{unicorn_binary} -c #{unicorn_config} -E #{rails_env} -D"
   end
 
   task :stop, :roles => :app, :except => { :no_release => true } do
