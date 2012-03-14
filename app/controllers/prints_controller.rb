@@ -9,6 +9,14 @@ class PrintsController < ApplicationController
     end
   end
   
+  def preferences
+    @preferences = {printer: cookies[:printer], building: cookies[:building]}
+    
+    respond_to do |format|
+      format.json { render json: @preferences }
+    end
+  end
+  
   def create
     documents = params[:print].delete(:documents) || []
     params[:print][:copies] = 1 if params[:print][:copies].blank?
@@ -37,8 +45,8 @@ class PrintsController < ApplicationController
         
         flash[:user] = @print.user
         flash[:count] = documents.size
-        flash[:printer] = @print.printer
-        flash[:building] = @print.building
+        flash[:printer] = cookies[:printer] = @print.printer
+        flash[:building] = cookies[:building] = @print.building
         
         format.html { redirect_to print_path(success: success) }
       else

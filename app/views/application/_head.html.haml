@@ -8,5 +8,5 @@
   = javascript_include_tag "application"
   = csrf_meta_tags
   :javascript
+    var preferences_path = "#{print_preferences_path.html_safe}";
     var printers = #{$printers.to_json.html_safe};
-

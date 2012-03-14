@@ -1,3 +1,5 @@
+:javascript
+  var defaults = #{(!!choose_building).to_s};
 = form_for @print, :url => create_print_path do |f|
   #main.row
     .col.span3.choice-span.location-options
