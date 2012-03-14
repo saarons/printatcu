@@ -37,13 +37,10 @@ class PrintsController < ApplicationController
         
         flash[:user] = @print.user
         flash[:count] = documents.size
-        flash[:printer] = cookies[:printer] = @print.printer
-        flash[:building] = cookies[:building] = @print.building
+        flash[:printer] = @print.printer
+        flash[:building] = @print.building
         
-        puts request.host.inspect
-        
-        cookies[:printer] = {value: @print.printer, secure: Rails.env.production?, domain: Rails.env.production? ? request.host : nil}
-        cookies[:building] = {value: @print.building, secure: Rails.env.production?, domain: Rails.env.production? ? request.host : nil}
+        set_cookies(@print)
         
         format.html { redirect_to print_path(success: success) }
       else
@@ -53,6 +50,17 @@ class PrintsController < ApplicationController
   end
   
   private
+  def set_cookies(print)
+    secure = Rails.env.production?
+    domain = if Rails.env.production? && request.host =~ ActionDispatch::Cookies::CookieJar::DOMAIN_REGEXP
+      $&
+    end
+      
+    [:printer, :building].each do |x|
+      cookies[x] = {value: print.send(x), secure: secure, domain: domain}
+    end
+  end
+  
   def cache_index
     unless params[:success]
       expires_in 30.minutes, :public => true
