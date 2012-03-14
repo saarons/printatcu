@@ -37,10 +37,8 @@ class PrintsController < ApplicationController
         
         flash[:user] = @print.user
         flash[:count] = documents.size
-        flash[:printer] = @print.printer
-        flash[:building] = @print.building
-        
-        set_cookies(flash[:printer], flash[:building])
+        flash[:printer] = cookies[:printer] = @print.printer
+        flash[:building] = cookies[:building] = @print.building
         
         format.html { redirect_to print_path(success: success) }
       else
@@ -50,11 +48,6 @@ class PrintsController < ApplicationController
   end
   
   private
-  def set_cookies(printer, building)
-    cookies[:printer] = {value: printer, secure: Rails.env.production?, domain: :all}
-    cookies[:building] = {value: building, secure: Rails.env.production?, domain: :all}
-  end
-  
   def cache_index
     unless params[:success]
       expires_in 30.minutes, :public => true
