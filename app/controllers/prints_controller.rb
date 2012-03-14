@@ -40,6 +40,9 @@ class PrintsController < ApplicationController
         flash[:printer] = cookies[:printer] = @print.printer
         flash[:building] = cookies[:building] = @print.building
         
+        cookies[:printer] = {value: @print.printer, secure: Rails.env.production?, domain: :all}
+        cookies[:building] = {value: @print.building, secure: Rails.env.production?, domain: :all}
+        
         format.html { redirect_to print_path(success: success) }
       else
         format.html { render action: "index" }
