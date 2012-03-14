@@ -52,8 +52,8 @@ class PrintsController < ApplicationController
   private
   def set_cookies(print)
     secure = Rails.env.production?
-    domain = if Rails.env.production? && request.host =~ ActionDispatch::Cookies::CookieJar::DOMAIN_REGEXP
-      $&
+    domain = if Rails.env.production?
+      request.host.split(".")[-2..-1].join(".")
     end
       
     [:printer, :building].each do |x|
