@@ -189,6 +189,11 @@ ruggles100a:
   :driver: HP LaserJet 9050 PS
   :location: Residence Halls
   :double_sided: true
+russell100a:
+  :host: russell100a-ninja.tc.columbia.edu
+  :driver: HP LaserJet 9050 PS
+  :location: Teachers College
+  :double_sided: true
 schapiro108a:
   :host: schapiro108a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
