@@ -1,12 +1,8 @@
 class PrintsController < ApplicationController
   before_filter :cache_index, :only => :index
   
-  def index
+  def new
     @print = Print.new
-
-    respond_to do |format|
-      format.html
-    end
   end
   
   def create
@@ -42,9 +38,9 @@ class PrintsController < ApplicationController
         
         set_cookies(@print)
         
-        format.html { redirect_to print_path(success: success) }
+        format.html { redirect_to root_path(success: success) }
       else
-        format.html { render action: "index" }
+        format.html { render action: "new" }
       end
     end
   end
