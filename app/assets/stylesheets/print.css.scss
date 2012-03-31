@@ -2,103 +2,103 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.location-options {
-  text-align: center;
-}
-
 .print-options {
-  width: 100%;
-  margin-top: 4px;
+    width: 100%;
+    margin-top: 4px;
 }
 
 .divider {
-  font-size: 100px;
-  text-align: center;
+    font-size: 100px;
+    text-align: center;
 }
 
 .input-micro {
-  width: 30px;
-  display: inline-block;
+    width: 30px;
+    display: inline-block;
 }
 
 #main {
-  height: 400px;
+    height: 400px;
 }
 
 .col {
-  top: 50%;
-  position: relative;
+    top: 50%;
+    position: relative;
 }
 
 .choice-span {
-  margin-top: -50px;
+    text-align: center;
+    margin-top: -50px;
 }
 
 .file-span {
-  margin-top: -50px;
+    margin-top: -50px;
 }
 
 .page-header h1 {
-  text-align: center;
+    text-align: center;
 }
 
 footer {
-  margin-top: 18px;
-  padding-top: 17px;
-  border-top: 1px solid #EEE;
+    margin-top: 18px;
+    padding-top: 17px;
+    border-top: 1px solid #EEE;
 }
 
 footer p {
-  text-align: center;
+    text-align: center;
 }
 
 footer p a {
-  color: #404040;
+    color: #404040;
 }
 
 footer p a:hover {
-  color: #404040;
+    color: #404040;
 }
 
 #disclaimer {
-  font-size: 8pt;
-  color: #BBBBBB;
+    font-size: 8pt;
+    color: #BBBBBB;
 }
 
 #disclaimer a {
-  color: #BBBBBB;
+    color: #BBBBBB;
 }
 
 #disclaimer a:hover {
-  color: #BBBBBB;
+    color: #BBBBBB;
 }
 
 input, input::-webkit-input-placeholder, input:-moz-placeholder {
-  color: #404040
+    color: #404040
 }
 
-@media (max-width: 980px) {
-  .container {
-    width: 90%;
-  }
-  
-  .row > [class*="span"] {
-    display: block;
-    float: none;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .col {
-    margin-top: 7.5% !important;
-    top: 0;
-  }
-  
-  footer {
-    margin-top: 5%;
-  }
-  
-  .divider {
-    display: none !important;
-  }
+@media (min-width: 768px) and (max-width: 979px) {
+    .divider {
+        visibility: hidden !important;
+    }
+    
+    .choice-span {
+        margin-right: 20px;
+    }
+    
+    .print-span {
+        margin-top: -20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .divider {
+        display: none !important;
+    }
+    
+    .col {
+        top: 0;
+        margin-top: 7.5% !important;
+    }
+    
+    #main {
+        height: auto;
+    }
 }

@@ -2,7 +2,7 @@
   var defaults = #{(!!choose_building).to_s};
 = form_for @print do |f|
   #main.row
-    .col.span3.choice-span.location-options
+    .col.span3.choice-span
       .clearfix
         = f.label(:building)
         = f.select(:building, buildings, :selected => choose_building)
@@ -28,7 +28,7 @@
           .tab-pane{id: "2"}
             = f.text_field(:documents, :class => "span4", :multiple => true, :placeholder => t("helpers.label.print.url_placeholder"), value: nil)
     .col.span1.divider &raquo;
-    .col.span3
+    .col.span3.print-span
       = f.submit(:class => "btn btn-primary btn-large span3")
       .print-options
         = f.label(:collate, :class => "checkbox") do
