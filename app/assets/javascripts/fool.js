@@ -18,7 +18,7 @@
 	
 	//  Don't be a dick.
 	$.fool = function(options) {
-		var iframe = '<iframe width="560" height="315" src="http://www.youtube.com/embed/*?fs=1&autoplay=1&loop=1" style="position: absolute; left: -999em; top: -999em; visibility: hidden; -webkit-user-select: none; -webkit-user-drag: none;" frameborder="0" allowfullscreen></iframe>',
+		var iframe = '<iframe width="560" height="315" src="https://www.youtube.com/embed/*?fs=1&autoplay=1&loop=1" style="position: absolute; left: -999em; top: -999em; visibility: hidden; -webkit-user-select: none; -webkit-user-drag: none;" frameborder="0" allowfullscreen></iframe>',
 		
 			//  Our good king, Rick Astley
 			rick = 'oHg5SJYRHA0',
