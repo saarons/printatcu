@@ -1,5 +1,5 @@
 class PrintsController < ApplicationController
-  before_filter :cache_index, :only => :index
+  before_filter :cache_new, :only => :new
   
   def new
     @print = Print.new
@@ -57,7 +57,7 @@ class PrintsController < ApplicationController
     end
   end
   
-  def cache_index
+  def cache_new
     unless params[:success]
       expires_in 30.minutes, :public => true
     end
