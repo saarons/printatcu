@@ -1,5 +1,5 @@
 %header.page-header
-  %h1 Print@CU
+  %h1 Print@Penn
 
 - if flash[:printer] && flash[:user]
   .alert.alert-success.alert-block
@@ -12,3 +12,7 @@
     %ul
       - @print.errors.full_messages.each do |msg|
         %li= msg
+- else
+  .alert.alert-info.alert-block
+    %a.close{data: {dismiss: "alert"}} &times;
+    %h4.alert-heading="Spring Fling 2012 is going to be awesome!!!"
