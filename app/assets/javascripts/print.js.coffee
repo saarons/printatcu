@@ -15,4 +15,4 @@ $(document).ready ->
         $("#print_building").change();
         $("#print_printer option[value=\"#{$.cookie("printer")}\"]").get(0).selected = true
         
-    $.fool({wonky:true, flash: true, hiddenVideos: true})
+    $.fool({wonky:true, hiddenVideos: true})
