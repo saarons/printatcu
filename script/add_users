@@ -3,7 +3,14 @@
 
 require File.expand_path("../../config/environment",  __FILE__)
 
-users = ["Tiësto", "Passion Pit"]
+users = ["Nestor Carbonell", "Evangeline Lilly", "Elizabeth Mitchell", "Ian Somerhalder", "Michelle Rodriguez",
+         "Harold Perrineau", "Adewale Akinnuoye-Agbaje", "Jeremy Davies", "Josh Holloway",
+         "Henry Ian Cusick", "Naveen Andrews", "Daniel Dae Kim", "Yunjin Kim", "Jeff Fahey", "Rebecca Mader",
+         "Michael Emerson", "Emilie de Ravin", "Malcolm David Kelley", "Terry O'Quinn", "Titus Welliver",
+         "Dominic Monaghan", "Jorge Garcia", "Maggie Grace", "Matthew Fox", "Cynthia Watros",
+         "Ken Leung", "Zuleikha Robinson", "L. Scott Caldwell", "Sam Anderson", "M. C. Gainey",
+         "Tania Raymonde", "Alan Dale", "Sonya Walger", "Kevin Durand", "Mira Furlan", "John Terry",
+         "Rodrigo Santoro", "Kiele Sanchez"]
 
 $redis.del("users")
 users.each do |user|

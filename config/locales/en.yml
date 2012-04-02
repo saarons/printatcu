@@ -30,4 +30,4 @@ en:
                 "Your documents have been successfully sent to <strong>%{printer}</strong> under the pseudonym \"<strong>%{user}</strong>\"."
           
     disclaimer_html:
-        "Please be aware that when your document is pushed from this server to the Penn printers, we cannot guarantee the security or privacy of your document.  Non-PDF documents will first be sent to Google for conversion.  See <a href=\"http://www.google.com/policies/privacy/\">Google's privacy policy</a> for retention terms."
+        "Please be aware that when your document is pushed from this server to the Columbia printers, we cannot guarantee the security or privacy of your document.  Non-PDF documents will first be sent to Google for conversion.  See <a href=\"http://www.google.com/policies/privacy/\">Google's privacy policy</a> for retention terms."

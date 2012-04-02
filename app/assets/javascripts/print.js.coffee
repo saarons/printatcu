@@ -14,5 +14,3 @@ $(document).ready ->
         $("#print_building option[value=\"#{$.cookie("building")}\"]").get(0).selected = true
         $("#print_building").change();
         $("#print_printer option[value=\"#{$.cookie("printer")}\"]").get(0).selected = true
-        
-    $.fool({wonky:true, hiddenVideos: true})
