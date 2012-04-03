@@ -6,7 +6,7 @@ class PrintsController < ApplicationController
   end
   
   def create
-    documents = params[:print].delete(:documents) || []
+    documents = params[:print].try(:delete, :documents) || []
     params[:print][:copies] = 1 if params[:print][:copies].blank?
     
     @print = Print.new(params[:print])
