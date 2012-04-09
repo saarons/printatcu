@@ -3,14 +3,26 @@
 
 require File.expand_path("../../config/environment",  __FILE__)
 
-users = ["Nestor Carbonell", "Evangeline Lilly", "Elizabeth Mitchell", "Ian Somerhalder", "Michelle Rodriguez",
-         "Harold Perrineau", "Adewale Akinnuoye-Agbaje", "Jeremy Davies", "Josh Holloway",
-         "Henry Ian Cusick", "Naveen Andrews", "Daniel Dae Kim", "Yunjin Kim", "Jeff Fahey", "Rebecca Mader",
-         "Michael Emerson", "Emilie de Ravin", "Malcolm David Kelley", "Terry O'Quinn", "Titus Welliver",
-         "Dominic Monaghan", "Jorge Garcia", "Maggie Grace", "Matthew Fox", "Cynthia Watros",
-         "Ken Leung", "Zuleikha Robinson", "L. Scott Caldwell", "Sam Anderson", "M. C. Gainey",
-         "Tania Raymonde", "Alan Dale", "Sonya Walger", "Kevin Durand", "Mira Furlan", "John Terry",
-         "Rodrigo Santoro", "Kiele Sanchez"]
+users = ["Barack Obama", "Vladimir Putin", "Hu Jintao", "Angela Merkel",
+   "Bill Gates", "Abdullah bin Abdul Aziz al Saud", "Pope Benedict XVI",
+   "Ben Bernanke", "Mark Zuckerberg", "David Cameron", "Sonia Gandhi",
+   "Mario Draghi", "Nicolas Sarkozy", "Wen Jiabao", "Zhou Xiaochuan",
+   "Hillary Clinton", "Michael Bloomberg", "Timothy Geithner",
+   "Manmohan Singh", "Warren Buffett", "Silvio Berlusconi",
+   "Dilma Rousseff", "Carlos Slim Helu", "Rupert Murdoch",
+   "Benjamin Netanyahu", "Ali Hoseini-Khamenei", "Michael Duke",
+   "Jeffrey Immelt", "Zhou Yongkang", "Sergey Brin", "Larry Page",
+   "Ali Al-Naimi", "Rostam Ghasemi", "Lou Jiwei", "Ashfaq Parvez Kayani",
+   "Mukesh Ambani", "Masaaki Shirakawa", "Kim Jong-il", "Ban Ki-moon",
+   "Christine Lagarde", "Jeff Bezos", "Jamie Dimon", "Robin Li",
+   "Lloyd Blankfein", "Li Ka-shing", "Charles Koch", "David Koch",
+   "Rex Tillerson", "Lakshmi Mittal", "Recep Erdogan", "Robert Zoellick",
+   "Bill Clinton", "Dalai Lama", "Larry Fink", "Khalifa bin Zayed Al-Nahyan",
+   "Bill Gross", "Joaquin Guzman Loera", "Ahmed Shuja Pasha",
+   "Dawood Ibrahim Kaskar", "Tim Cook", "Dmitry Medvedev", "Masayoshi Son",
+   "Azim Premji", "Yoshihiko Noda", "Joseph Blatter", "Jill Abramson",
+   "Bernard Arnault", "Sebastian Pinera", "John Boehner", "Jacques Rogge",
+   "Xi Jinping", "Alisher Usmanov"]
 
 $redis.del("users")
 users.each do |user|
