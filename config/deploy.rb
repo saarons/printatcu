@@ -50,7 +50,7 @@ after "deploy:finalize_update", :symlink_db
 namespace :foreman do
   desc "Export the Procfile to Ubuntu's upstart scripts"
   task :export, :roles => :app do
-    run "#{sudo} whoami && cd #{release_path} && rvmsudo bundle exec foreman export upstart /etc/init -c \"worker=2,node=1\" -e config/foreman/production.env -a #{application} -u #{user} -l #{shared_path}/log"
+    run "#{sudo} whoami && cd #{release_path} && rvmsudo bundle exec foreman export upstart /etc/init -c \"worker=2\" -e config/foreman/production.env -a #{application} -u #{user} -l #{shared_path}/log"
   end
 end
 after "deploy:update", "foreman:export"
