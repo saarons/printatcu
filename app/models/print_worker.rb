@@ -6,7 +6,7 @@ class PrintWorker
     ok = document.needs_conversion? ? document.convert : true
     if ok
       document.enqueue
-      $redis.publish("print", ActiveSupport::JSON.encode({building: document.print.building}))
+      document.announce
     end
     document.cleanup
   end

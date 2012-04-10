@@ -51,6 +51,11 @@ class Document < ActiveRecord::Base
     FileUtils.rm files
   end
   
+  def announce
+    json = ActiveSupport::JSON.encode({building: print.building})
+    Pusher["printatcu"].trigger("print", json)
+  end
+  
   def converted_tempfile
     self.tempfile.gsub(extension, ".pdf")
   end
