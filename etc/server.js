@@ -7,4 +7,4 @@ client.on("message", function (channel, message) {
     io.sockets.emit(channel, message);
 });
 
-client.subscribe("print");
+client.subscribe("printatcu:print");
