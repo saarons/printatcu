@@ -54,7 +54,7 @@ class PrintsController < ApplicationController
     end
       
     [:printer, :building].each do |x|
-      cookies[x] = {value: print.send(x), secure: secure, domain: domain}
+      cookies.permanent[x] = {value: print.send(x), secure: secure, domain: domain}
     end
   end
   

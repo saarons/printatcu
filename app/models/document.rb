@@ -52,8 +52,10 @@ class Document < ActiveRecord::Base
   end
   
   def announce
-    json = ActiveSupport::JSON.encode({building: print.building})
-    Pusher["printatcu"].trigger("print", json)
+    if Rails.env.production?
+      json = ActiveSupport::JSON.encode({building: print.building})
+      Pusher["printatcu"].trigger("print", json)
+    end
   end
   
   def converted_tempfile
