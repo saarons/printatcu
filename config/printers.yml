@@ -144,11 +144,6 @@ lewisohn300b:
   :driver: HP LaserJet 9050 PS
   :location: Lewisohn
   :double_sided: true
-math303a:
-  :host: math303a-ninja.atg.columbia.edu
-  :driver: HP LaserJet 4350 Series PS
-  :location: Math
-  :double_sided: true
 mcbain100a:
   :host: mcbain100a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
@@ -346,7 +341,7 @@ butler501a:
   :double_sided: true
 butler606a:
   :host: butler606a-ninja.atg.columbia.edu
-  :driver: HP LaserJet 4350 Series PS
+  :driver: HP LaserJet P4515
   :location: Butler
   :double_sided: true
 dodgeart701a:
@@ -378,6 +373,11 @@ kent300b:
   :host: kent300b-ninja.atg.columbia.edu
   :driver: HP LaserJet P4015
   :location: Kent
+  :double_sided: true
+math303a:
+  :host: math303a-ninja.atg.columbia.edu
+  :driver: HP LaserJet P4515
+  :location: Math
   :double_sided: true
 nwcb400a:
   :host: nwcb400a-ninja.atg.columbia.edu
@@ -436,7 +436,12 @@ uris130d:
   :double_sided: true
 dodgeart412a:
   :host: dodgeart412a-ninja.atg.columbia.edu
-  :driver: HP LaserJet 4250 PS
+  :driver: HP LaserJet P4515
+  :location: Dodge
+  :double_sided: true
+dodgeart412b:
+  :host: dodgeart412b-ninja.atg.columbia.edu
+  :driver: HP LaserJet P4515
   :location: Dodge
   :double_sided: true
 socialwork105a:
