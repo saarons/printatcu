@@ -86,6 +86,12 @@ input, input::-webkit-input-placeholder, input:-moz-placeholder {
     .print-span {
         margin-top: -20px;
     }
+    
+    .input-micro {
+        width: 20px;
+        margin-left: 4px;
+        display: inline-block;
+    }
 }
 
 @media (max-width: 767px) {
