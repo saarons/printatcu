@@ -49,6 +49,6 @@ module Printatcu
     config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = "2012-04-02T05:29:34Z"
+    config.assets.version = "2012-04-24T02:01:26Z"
   end
 end
