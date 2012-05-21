@@ -10,6 +10,7 @@ gem "airbrake"
 gem "capistrano"
 gem "jquery-rails"
 gem "rails", "3.2.2"
+gem "rvm-capistrano"
 gem "foreman", "0.39.0", :require => false
 gem "resque", :require => ["resque", "resque/server"]
 gem "shinobi", :git => "git://github.com/saarons/shinobi.git"

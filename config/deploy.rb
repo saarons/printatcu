@@ -19,7 +19,6 @@ set :repository, "git@github.com:saarons/printatcu.git"
 server "printatcu.com", :app, :web, :db, :primary => true
 
 set :rvm_ruby_string, "ruby-1.9.3"
-set :rvm_type, :user
 
 set :rails_env, :production
 set :unicorn_binary, "bundle exec unicorn"
