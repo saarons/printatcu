@@ -6,7 +6,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require bootstrap-tab
+//= require bootstrap-alert
 //= require_tree .
 
 var _gaq = _gaq || [];
