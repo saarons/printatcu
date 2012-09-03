@@ -54,8 +54,8 @@ carman103b:
   :driver: HP LaserJet 9050 PS
   :location: Residence Halls
   :double_sided: true
-claremontb01a:
-  :host: claremontb01a-ninja.atg.columbia.edu
+claremntb01a:
+  :host: claremntb01a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
   :location: Residence Halls
   :double_sided: true
@@ -74,8 +74,8 @@ et251color:
   :driver: HP Color LaserJet 4700 PS
   :location: Mudd
   :double_sided: true
-furnald102a:
-  :host: furnald102a-ninja.atg.columbia.edu
+furnald107a:
+  :host: furnald107a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
   :location: Residence Halls
   :double_sided: true
@@ -107,11 +107,6 @@ iab323a:
 iab323b:
   :host: iab323b-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
-  :location: International Affairs
-  :double_sided: true
-iab509a:
-  :host: iab509a-ninja.atg.columbia.edu
-  :driver: HP LaserJet P4515
   :location: International Affairs
   :double_sided: true
 lerner200a:
@@ -149,18 +144,18 @@ mcbain100a:
   :driver: HP LaserJet 9050 PS
   :location: Residence Halls
   :double_sided: true
-mudd251a:
-  :host: mudd251a-ninja.atg.columbia.edu
+et251a:
+  :host: et251a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
   :location: Mudd
   :double_sided: true
-mudd251b:
-  :host: mudd251b-ninja.atg.columbia.edu
+et251b:
+  :host: et251b-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
   :location: Mudd
   :double_sided: true
-mudd251c:
-  :host: mudd251c-ninja.atg.columbia.edu
+et251c:
+  :host: et251c-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
   :location: Mudd
   :double_sided: true
@@ -203,11 +198,6 @@ six00w113a:
   :host: six00w113a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
   :location: Residence Halls
-  :double_sided: true
-statistics902a:
-  :host: statistics902a-ninja.atg.columbia.edu
-  :driver: HP LaserJet 8150 Series PS
-  :location: Statistics
   :double_sided: true
 watt100a:
   :host: watt100a-ninja.atg.columbia.edu
@@ -331,12 +321,12 @@ butler305a:
   :double_sided: true
 butler401a:
   :host: butler401a-ninja.atg.columbia.edu
-  :driver: HP LaserJet 4350 Series PS
+  :driver: HP LaserJet P4515
   :location: Butler
   :double_sided: true
 butler501a:
   :host: butler501a-ninja.atg.columbia.edu
-  :driver: HP LaserJet 4350 Series PS
+  :driver: HP LaserJet P4515
   :location: Butler
   :double_sided: true
 butler606a:
@@ -386,16 +376,6 @@ nwcb400a:
   :double_sided: true
 nwcb400b:
   :host: nwcb400b-ninja.atg.columbia.edu
-  :driver: HP LaserJet P4515
-  :location: Northwest Corner Building
-  :double_sided: true
-nwcb600a:
-  :host: nwcb600a-ninja.atg.columbia.edu
-  :driver: HP LaserJet P4515
-  :location: Northwest Corner Building
-  :double_sided: true
-nwcb600b:
-  :host: nwcb600b-ninja.atg.columbia.edu
   :driver: HP LaserJet P4515
   :location: Northwest Corner Building
   :double_sided: true
@@ -476,11 +456,6 @@ socialwork214a:
   :double_sided: true
 socialwork309a:
   :host: socialwork309a-ninja.atg.columbia.edu
-  :driver: HP LaserJet 9000 Series PS
-  :location: Social Work
-  :double_sided: true
-socialwork401a:
-  :host: socialwork401a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9000 Series PS
   :location: Social Work
   :double_sided: true
