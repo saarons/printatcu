@@ -379,6 +379,16 @@ nwcb400b:
   :driver: HP LaserJet P4515
   :location: Northwest Corner Building
   :double_sided: true
+nwcb600a:
+  :host: nwcb600a-ninja.atg.columbia.edu
+  :driver: HP LaserJet P4515
+  :location: Northwest Corner Building
+  :double_sided: true
+nwcb600b:
+  :host: nwcb600b-ninja.atg.columbia.edu
+  :driver: HP LaserJet P4515
+  :location: Northwest Corner Building
+  :double_sided: true
 schermerhorn601a:
   :host: schermerhorn601a-ninja.atg.columbia.edu
   :driver: HP LaserJet 4350 Series PS
