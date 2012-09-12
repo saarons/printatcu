@@ -10,9 +10,10 @@ class Document < ActiveRecord::Base
   def convert
     fetch_url = is_url? ? url : "http://printatcu.com/uploads/#{tempfile}"
     response = Excon.get("https://docs.google.com/viewer", :query => {:url => fetch_url})
-    pdf_url = ExecJS.eval(response.body[/gpUrl:('[^']*')/,1])
+    gp_url = response.body[/gpUrl:('[^']*')/,1]
     
-    if pdf_url
+    if gp_url
+      pdf_url = ExecJS.eval(gp_url)
       cookie_jar = Tempfile.new("cookie_jar")
       self.tempfile = is_url? ? SecureRandom.hex(64) : converted_tempfile
       output_file = Rails.root.join("public/uploads", tempfile).to_s
