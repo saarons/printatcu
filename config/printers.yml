@@ -114,6 +114,11 @@ iab323b:
   :driver: HP LaserJet 9050 PS
   :location: International Affairs
   :double_sided: true
+iab509a:
+  :host: iab509a-ninja.atg.columbia.edu
+  :driver: HP LaserJet P4515
+  :location: International Affairs
+  :double_sided: true
 lerner200a:
   :host: lerner200a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
