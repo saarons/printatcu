@@ -82,16 +82,16 @@ end
 namespace :resque do
   task :start => :environment do
     queue "cd #{deploy_to}/#{current_path}"
-    queue "RAILS_ENV=#{rails_env} bin/resque start"
+    queue "RAILS_ENV=#{rails_env} etc/resque start"
   end
 
   task :restart => :environment do
     queue "cd #{deploy_to}/#{current_path}"
-    queue "RAILS_ENV=#{rails_env} bin/resque restart"
+    queue "RAILS_ENV=#{rails_env} etc/resque restart"
   end
 
   task :stop => :environment do
     queue "cd #{deploy_to}/#{current_path}"
-    queue "RAILS_ENV=#{rails_env} bin/resque stop"
+    queue "RAILS_ENV=#{rails_env} etc/resque stop"
   end
 end
