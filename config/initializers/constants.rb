@@ -5,20 +5,21 @@ ALL_EXTENSIONS = DIRECT_EXTENSIONS + GOOGLE_EXTENSIONS
 
 SPLIT_LOCATIONS = {
   "Residence Halls" => {
-    "Carman"      => /^carman/,
-    "Broadway"    => /^broadway/,
-    "Claremont"   => /^claremo?nt/,
-    "East Campus" => /^ec/,
-    "Furnald"     => /^furnald/,
-    "Harmony"     => /^harmony/,
-    "Hartley"     => /^hartley/,
-    "McBain"      => /^mcbain/,
-    "Nussbaum"    => /^six00w/,
-    "River"       => /^river/,
-    "Ruggles"     => /^ruggles/,
-    "Schapiro"    => /^schapiro/,
-    "Watt"        => /^watt/,
-    "Wien"        => /^wien/,
-    "Woodbridge"  => /^woodbridge/
+    "Carman"       => /^carman/,
+    "Broadway"     => /^broadway/,
+    "Claremont"    => /^claremo?nt/,
+    "East Campus"  => /^ec/,
+    "Furnald"      => /^furnald/,
+    "Harmony"      => /^harmony/,
+    "Hartley"      => /^hartley/,
+    "McBain"       => /^mcbain/,
+    "Nussbaum"     => /^six00w/,
+    "River"        => /^river/,
+    "Ruggles"      => /^ruggles/,
+    "Schapiro"     => /^schapiro/,
+    "Watt"         => /^watt/,
+    "Wien"         => /^wien/,
+    "Woodbridge"   => /^woodbridge/,
+    "Carlton Arms" => /^carlton/
   }
 }

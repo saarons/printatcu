@@ -44,8 +44,13 @@ butler403a:
   :driver: HP LaserJet 9050 PS
   :location: Butler
   :double_sided: true
-carman103a:
-  :host: carman103a-ninja.atg.columbia.edu
+carlton100a:
+  :host: carlton100a-ninja.atg.columbia.edu
+  :driver: HP LaserJet 9050 PS
+  :location: Residence Halls
+  :double_sided: true
+carlton100b:
+  :host: carlton100b-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
   :location: Residence Halls
   :double_sided: true
@@ -438,11 +443,6 @@ dodgeart412b:
   :host: dodgeart412b-ninja.atg.columbia.edu
   :driver: HP LaserJet P4515
   :location: Dodge
-  :double_sided: true
-socialwork105a:
-  :host: socialwork105a-ninja.atg.columbia.edu
-  :driver: HP LaserJet 9050 Series PS
-  :location: Social Work
   :double_sided: true
 socialwork105b:
   :host: socialwork105b-ninja.atg.columbia.edu
