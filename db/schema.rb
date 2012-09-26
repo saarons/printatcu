@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120307225523) do
+ActiveRecord::Schema.define(:version => 20120926065629) do
 
   create_table "documents", :force => true do |t|
     t.integer  "print_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20120307225523) do
     t.datetime "updated_at"
     t.boolean  "collate"
     t.integer  "copies"
+    t.string   "ip"
   end
 
 end
