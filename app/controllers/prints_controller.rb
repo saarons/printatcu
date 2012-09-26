@@ -11,7 +11,7 @@ class PrintsController < ApplicationController
     params[:print][:copies] = 1 if params[:print][:copies].blank?
     
     @print = Print.new(params[:print])
-    @print.user = $redis.rpoplpush("users", "users")
+    @print.user = $redis.rpoplpush("users", "users") || "Malkovich"
     
     documents.reject(&:blank?).each do |document|
       doc = @print.documents.build
