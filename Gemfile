@@ -7,10 +7,9 @@ gem "excon"
 gem "redis"
 gem "mysql2"
 gem "pusher"
-gem "daemon-spawn"
 gem "jquery-rails"
 gem "rails", "3.2.8"
-gem "foreman", "0.39.0", :require => false
+gem "daemon-spawn", :require => "daemon_spawn"
 gem "resque", :require => ["resque", "resque/server"]
 gem "shinobi", :git => "git://github.com/saarons/shinobi.git"
 
