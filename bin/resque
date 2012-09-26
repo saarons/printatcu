@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require File.expand_path('../../config/boot',  __FILE__)
+require File.expand_path('../../config/environment',  __FILE__)
+
+class ResqueWorkerDaemon < DaemonSpawn::Base
+  def start(args)
+    @worker = Resque::Worker.new("*")
+    @worker.verbose = 1
+    @worker.work
+  end
+
+  def stop
+    @worker.try(:shutdown)
+  end
+end
+
+ResqueWorkerDaemon.spawn!({
+  :processes => 2,
+  :log_file => Rails.root.join("log", "resque.log"),
+  :pid_file => Rails.root.join("tmp", "pids", "resque.pid"),
+  :sync_log => true,
+  :working_dir => Rails.root,
+  :singleton => true
+})

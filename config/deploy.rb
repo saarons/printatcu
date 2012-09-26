@@ -1,78 +1,97 @@
-require "./config/boot"
-require "rvm/capistrano"
-require "bundler/capistrano"
-require "airbrake/capistrano"
+require "mina/bundler"
+require "mina/rails"
+require "mina/git"
+require "mina/rvm"
 
-ssh_options[:port] = 815
-ssh_options[:forward_agent] = true
-
-default_run_options[:pty] = true
-
-set :user, "sam"
-set :application, "printatcu"
-
-set :scm, "git"
+set :domain, "printatcu"
+set :deploy_to, "/var/www/printatcu"
+set :repository, "git://github.com/saarons/printatcu.git"
 set :branch, "master"
-set :deploy_via, :remote_cache
-set :repository, "git@github.com:saarons/printatcu.git"
 
-server "printatcu.com", :app, :web, :db, :primary => true
+set :shared_paths, ["config/database.yml", "log", "public/uploads", "tmp/pids"]
 
-set :rvm_ruby_string, "ruby-1.9.3"
-
-set :rails_env, :production
-set :unicorn_binary, "bundle exec unicorn"
-set :unicorn_config, "#{current_path}/config/unicorn.rb"
-set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
-
-task :setup_app_dir, :roles => :app do
-  sudo "chown #{user}:#{user} -R #{deploy_to}"
+task :environment do
+  invoke :'rvm:use[ruby-1.9.3]'
 end
-after "deploy:setup", :setup_app_dir
 
-task :symlink_uploads_folder, :roles => :app do  
-  path  = "#{shared_path}/uploads"
-  symlink_path = "#{release_path}/public/uploads"
-  run "mkdir -p #{path}"
-  run "rm -rf #{symlink_path}"
-  run "ln -sf #{path} #{symlink_path}"
+task :setup => :environment do
+  queue! %[mkdir -p "#{deploy_to}/shared/log"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
+
+  queue! %[mkdir -p "#{deploy_to}/shared/public/uploads"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/public/uploads"]
+
+  queue! %[mkdir -p "#{deploy_to}/shared/config"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
+
+  queue! %[mkdir -p "#{deploy_to}/shared/tmp/pids"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/tmp/pids"]
+
+  queue! %[touch "#{deploy_to}/shared/config/database.yml"]
 end
-after "deploy:update_code", :symlink_uploads_folder
 
-task :symlink_db, :roles => :db do
-  run "mkdir -p #{shared_path}/config"
-  upload "config/database.yml", "#{shared_path}/config/database.yml", :via => :scp, :mode => 0600
-  run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-end
-after "deploy:finalize_update", :symlink_db
+desc "Deploys the current version to the server."
+task :deploy => :environment do
+  deploy do
+    invoke :'git:clone'
+    invoke :'deploy:link_shared_paths'
+    invoke :'bundle:install'
+    invoke :'rails:db_migrate'
+    invoke :'rails:assets_precompile'
 
-namespace :foreman do
-  desc "Export the Procfile to Ubuntu's upstart scripts"
-  task :export, :roles => :app do
-    run "#{sudo} whoami && cd #{release_path} && rvmsudo bundle exec foreman export upstart /etc/init -c \"worker=2\" -e config/foreman/production.env -a #{application} -u #{user} -l #{shared_path}/log"
+    to :launch do
+      if ENV["cold"]
+        invoke :start
+      else
+        invoke :restart
+      end
+    end
   end
 end
-after "deploy:update", "foreman:export"
 
-namespace :deploy do
-  task :start, :roles => :app, :except => { :no_release => true } do
-    sudo "start #{application}"
-    run "cd #{current_path} && UNICORN_PWD=#{current_path} #{unicorn_binary} -c #{unicorn_config} -E #{rails_env} -D"
+task :start do
+  invoke :'resque:start'
+  invoke :'unicorn:start'
+end
+
+task :restart do
+  invoke :'resque:restart'
+  invoke :'unicorn:restart'
+end
+
+task :stop do
+  invoke :'resque:stop'
+  invoke :'unicorn:stop'
+end
+
+namespace :unicorn do
+  task :start => :environment do
+    queue "cd #{deploy_to}/#{current_path}"
+    queue "UNICORN_PWD=#{deploy_to}/#{current_path} #{bundle_path}/unicorn -c config/unicorn.rb -E #{rails_env} -D"
   end
 
-  task :stop, :roles => :app, :except => { :no_release => true } do
-    sudo "stop #{application}"
-    run "kill `cat #{unicorn_pid}`"
+  task :restart do
+    queue "kill -s HUP `cat #{deploy_to}/shared/tmp/pids/unicorn.pid`"
   end
-  
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{sudo} restart #{application}"
-    run "kill -s USR2 `cat #{unicorn_pid}`"
-    run "kill -s WINCH `cat #{unicorn_pid}.oldbin`"
-    run "kill -s QUIT `cat #{unicorn_pid}.oldbin`"
+
+  task :stop do
+    queue "kill -s QUIT `cat #{deploy_to}/shared/tmp/pids/unicorn.pid`"
   end
-  
-  task :graceful_stop, :roles => :app, :except => { :no_release => true } do
-    run "kill -s QUIT `cat #{unicorn_pid}`"
+end
+
+namespace :resque do
+  task :start => :environment do
+    queue "cd #{deploy_to}/#{current_path}"
+    queue "RAILS_ENV=#{rails_env} bin/resque start"
+  end
+
+  task :restart => :environment do
+    queue "cd #{deploy_to}/#{current_path}"
+    queue "RAILS_ENV=#{rails_env} bin/resque restart"
+  end
+
+  task :stop => :environment do
+    queue "cd #{deploy_to}/#{current_path}"
+    queue "RAILS_ENV=#{rails_env} bin/resque stop"
   end
 end
