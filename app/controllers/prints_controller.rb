@@ -12,6 +12,10 @@ class PrintsController < ApplicationController
     
     @print = Print.new(params[:print])
     @print.user = $redis.rpoplpush("users", "users") || "Malkovich"
+
+    if Rails.env.production?
+      @print.ip = request.headers["X-Real-IP"]
+    end
     
     documents.reject(&:blank?).each do |document|
       doc = @print.documents.build
