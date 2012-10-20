@@ -1,0 +1,4 @@
+update_statuses:
+  every: "10m"
+  queue: maintenance
+  class: UpdateStatuses

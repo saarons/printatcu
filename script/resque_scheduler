@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require File.expand_path('../../config/boot',  __FILE__)
+require File.expand_path('../../config/environment',  __FILE__)
+
+class ResqueSchedulerDaemon < DaemonSpawn::Base
+  def start(args)
+    Resque::Scheduler.verbose = true
+    Resque::Scheduler.run
+  end
+
+  def stop
+    Resque::Scheduler.shutdown
+  end
+end
+
+ResqueSchedulerDaemon.spawn!({
+  :log_file => Rails.root.join("log", "resque_scheduler.log").to_s,
+  :pid_file => Rails.root.join("tmp", "pids", "resque_scheduler.pid").to_s,
+  :sync_log => true,
+  :working_dir => Rails.root.to_s,
+  :singleton => true
+})

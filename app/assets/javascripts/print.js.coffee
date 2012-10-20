@@ -9,7 +9,7 @@ $(document).ready ->
     format = (selection) ->
         status = gon.status[selection.id]
         image = if status
-            "<img class='status' #{status} />"
+            "<img class='status #{status}' />"
         else
             ""
         image + selection.text

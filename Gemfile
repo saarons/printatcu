@@ -8,11 +8,13 @@ gem "excon"
 gem "redis"
 gem "mysql2"
 gem "pusher"
+gem "nokogiri"
 gem "jquery-rails"
 gem "rails", "3.2.8"
 gem "daemon-spawn", :require => "daemon_spawn"
 gem "resque", :require => ["resque", "resque/server"]
 gem "shinobi", :git => "git://github.com/saarons/shinobi.git"
+gem "resque-scheduler", :require => ["resque_scheduler", "resque_scheduler/server"]
 
 group :production do
   gem "unicorn"

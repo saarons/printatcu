@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#print_documents[type="file"] {
+    width: 100%;
+}
+
 .select2-container .status {
     float: left;
     margin-top: 6px;
@@ -10,13 +14,25 @@
 }
 
 .select2-results .status {
-    margin-right: 1px;
+    margin-right: 6px;
 }
 
 .status.green {
+    background-color: #3ADC1C;
+}
+
+.status {
     width: 15px;
     height: 15px;
-    background-color: #3ADC1C;
+    display: inline-block;
+}
+
+.status.red {
+    background-color: #C00000;
+}
+
+.status.yellow {
+    background-color: #F0F090;
 }
 
 .select2-container {

@@ -51,16 +51,19 @@ end
 
 task :start do
   invoke :'resque:start'
+  invoke :'resque_scheduler:start'
   invoke :'unicorn:start'
 end
 
 task :restart do
   invoke :'resque:restart'
+  invoke :'resque_scheduler:restart'
   invoke :'unicorn:restart'
 end
 
 task :stop do
   invoke :'resque:stop'
+  invoke :'resque_scheduler:stop'
   invoke :'unicorn:stop'
 end
 
@@ -93,5 +96,22 @@ namespace :resque do
   task :stop => :environment do
     queue "cd #{deploy_to}/#{current_path}"
     queue "RAILS_ENV=#{rails_env} script/resque stop"
+  end
+end
+
+namespace :resque_scheduler do
+  task :start => :environment do
+    queue "cd #{deploy_to}/#{current_path}"
+    queue "RAILS_ENV=#{rails_env} script/resque_scheduler start"
+  end
+
+  task :restart => :environment do
+    queue "cd #{deploy_to}/#{current_path}"
+    queue "RAILS_ENV=#{rails_env} script/resque_scheduler restart"
+  end
+
+  task :stop => :environment do
+    queue "cd #{deploy_to}/#{current_path}"
+    queue "RAILS_ENV=#{rails_env} script/resque_scheduler stop"
   end
 end
