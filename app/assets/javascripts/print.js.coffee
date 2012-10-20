@@ -6,8 +6,14 @@ $(document).ready ->
     printer = $("#print_printer")
     building = $("#print_building")
 
+    format = (selection) ->
+        status = defcon[selection.id]
+        "<img class=\"status #{status}\" /> #{selection.text}"
+
     printer.select2
         width: "off"
+        formatResult: format
+        formatSelection: format
         minimumResultsForSearch: NaN
     building.select2
         width: "off"
@@ -20,6 +26,6 @@ $(document).ready ->
     building.change (event) -> change_printers(event.val)
         
     if !defaults && (p = $.cookie("printer")) && (b = $.cookie("building"))
-        building.select2("val", b);
+        building.select2("val", b)
         change_printers(b)
         printer.select2("val", p)

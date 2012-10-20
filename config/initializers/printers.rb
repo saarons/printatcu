@@ -24,3 +24,4 @@ end
 
 $printers = printers
 $buildings = printers.keys
+$status = printers.values.flatten.inject({}) { |memo, obj| memo.merge(obj => "green") }
