@@ -7,6 +7,4 @@
   %link{href: "//fonts.googleapis.com/css?family=Ubuntu", rel: "stylesheet", type: "text/css"}
   = javascript_include_tag "application"
   = csrf_meta_tags
-  :javascript
-    var defcon = #{$status.to_json};
-    var printers = #{$printers.to_json.html_safe};
+  = include_gon init: true

@@ -7,8 +7,12 @@ $(document).ready ->
     building = $("#print_building")
 
     format = (selection) ->
-        status = defcon[selection.id]
-        "<img class=\"status #{status}\" /> #{selection.text}"
+        status = gon.status[selection.id]
+        image = if status
+            "<img class='status' #{status} />"
+        else
+            ""
+        image + selection.text
 
     printer.select2
         width: "off"
@@ -20,8 +24,8 @@ $(document).ready ->
 
     change_printers = (slug) ->
         printer.empty()
-        printer.append($("<option></option>").attr("value", p).text(p)) for p in printers[slug]
-        printer.select2("val", printers[slug][0])
+        printer.append($("<option></option>").attr("value", p).text(p)) for p in gon.printers[slug]
+        printer.select2("val", gon.printers[slug][0])
         
     building.change (event) -> change_printers(event.val)
         

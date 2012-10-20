@@ -1,5 +1,6 @@
 source "http://rubygems.org"
 
+gem "gon"
 gem "mina"
 gem "haml"
 gem "dalli"
