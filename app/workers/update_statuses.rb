@@ -8,16 +8,19 @@ class UpdateStatuses
       uri = URI(ENDPOINT)
       doc = Nokogiri::HTML(Net::HTTP.get(uri))
 
-      results = doc.css("td:first-child").inject({}) do |memo, element|
+      results = doc.css("tr:not(:first-child)").inject({}) do |memo, element|
         host = element.children[0].text
-        color = case element.attributes["bgcolor"].value
-        when "#3ADC1C"
+        status = element.children[2].text
+
+        color = case status
+        when /Ready/
           "green"
-        when "#F0F090"
+        when /Refill/, /Replace/, /Paper/
           "yellow"
-        when "#C0000"
+        when /Down/, /Unknown/, /Unreachable/, /Service/
           "red"
         end
+
         memo.merge(host => color)
       end
 
