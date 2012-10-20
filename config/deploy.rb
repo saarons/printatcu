@@ -8,7 +8,7 @@ set :deploy_to, "/var/www/printatcu"
 set :repository, "git://github.com/saarons/printatcu.git"
 set :branch, "master"
 
-set :shared_paths, ["config/database.yml", "log", "public/uploads", "tmp/pids"]
+set :shared_paths, ["config/database.yml", "log", "public/uploads", "tmp/pids", "tmp/sockets"]
 
 task :environment do
   invoke :'rvm:use[ruby-1.9.3]'
@@ -26,6 +26,9 @@ task :setup => :environment do
 
   queue! %[mkdir -p "#{deploy_to}/shared/tmp/pids"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/tmp/pids"]
+
+  queue! %[mkdir -p "#{deploy_to}/shared/tmp/sockets"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/tmp/sockets"]
 
   queue! %[touch "#{deploy_to}/shared/config/database.yml"]
 end
