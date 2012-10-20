@@ -3,12 +3,9 @@
 = form_for @print do |f|
   #main.row
     .col.span3.choice-span
-      .clearfix
-        = f.label(:building)
-        = f.select(:building, buildings, :selected => choose_building)
-      .clearfix
-        = f.label(:printer)
-        = f.select(:printer, default_printers, :selected => choose_printer)
+      = f.select(:building, buildings, :selected => choose_building)
+      %p
+      = f.select(:printer, default_printers, :selected => choose_printer)
     .col.span1.divider &raquo;
     .col.span4.file-span
       .tabbable
