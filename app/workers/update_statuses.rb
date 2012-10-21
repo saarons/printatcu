@@ -1,12 +1,10 @@
-require "net/http"
-
 class UpdateStatuses
   ENDPOINT = "http://www.columbia.edu/acis/facilities/printers/ninja_status.html"
 
   class << self
     def perform
-      uri = URI(ENDPOINT)
-      doc = Nokogiri::HTML(Net::HTTP.get(uri))
+      response = Excon.get(ENDPOINT)
+      doc = Nokogiri::HTML(response.body)
 
       results = doc.css("tr:not(:first-child)").inject({}) do |memo, element|
         host = element.children[0].text
