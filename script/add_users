@@ -27,7 +27,9 @@ users = [
    "Richard Yates"
 ]
 
+$redis.multi
 $redis.del("users")
 users.each do |user|
   $redis.lpush("users", user)
 end
+$redis.exec

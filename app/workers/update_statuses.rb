@@ -13,10 +13,10 @@ class UpdateStatuses
         color = case status
         when /Ready/
           "green"
-        when /Refill/, /Replace/, /Paper/
-          "yellow"
         when /Down/, /Unknown/, /Unreachable/, /Service/
           "red"
+        else
+          "yellow"
         end
 
         memo.merge(host => color)
