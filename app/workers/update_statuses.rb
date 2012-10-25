@@ -6,7 +6,7 @@ class UpdateStatuses
       response = Excon.get(ENDPOINT)
       doc = Nokogiri::HTML(response.body)
 
-      results = doc.css("tr:not(:first-child)").inject({}) do |memo, element|
+      results = doc.css("tr").inject({}) do |memo, element|
         host = element.children[0].text
         status = element.children[2].text
 
