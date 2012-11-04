@@ -1,6 +1,6 @@
 Print@CU
 ========
-Print@CU allows anyone to send documetns to Columbia University's NINJa printing system.
+Print@CU allows anyone to send documents to Columbia University's NINJa printing system.
 
 Setup
 -----
