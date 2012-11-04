@@ -6,8 +6,8 @@ Setup
 -----
 You will need MySQL and Redis to be installed before you can start working with the server.
 
-  $ bundle install
-  $ rails server
+    $ bundle install
+    $ rails server
   
 Then just point your browser at ```http://localhost:3000```
   
