@@ -344,6 +344,11 @@ butler606a:
   :driver: HP LaserJet P4515
   :location: Butler
   :double_sided: true
+dodgeart701a:
+  :host: dodgeart701a-ninja.atg.columbia.edu
+  :driver: HP LaserJet 5100 PS
+  :location: Dodge
+  :double_sided: true
 dodgeart701b:
   :host: dodgeart701b-ninja.atg.columbia.edu
   :driver: HP LaserJet 5200 PS
