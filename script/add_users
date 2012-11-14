@@ -4,27 +4,9 @@
 require File.expand_path("../../config/environment",  __FILE__)
 
 users = [
-   "Harper Lee", "Mark Twain", "F. Scott Fitzgerald", "J.D. Salinger",
-   "John Steinbeck", "Edgar Allan Poe", "Robert Frost",
-   "Nathaniel Hawthorne", "Ray Bradbury", "Louisa May Alcott", "Arthur Miller",
-   "Ernest Hemingway", "Truman Capote", "Margaret Mitchell", "Edith Wharton",
-   "Emily Dickinson", "L. Frank Baum", "Dave Cullen", "Herman Melville",
-   "Kurt Vonnegut", "William Faulkner", "Walt Whitman", "Alice Walker",
-   "Tennessee Williams", "E.B. White", "Henry David Thoreau", "Joseph Heller",
-   "Willa Cather", "Jack Kerouac", "Sherwood Anderson", "Stephen King",
-   "Flannery O'Connor", "Theodore Dreiser", "John Updike", "Norman Maclean",
-   "Raymond Chandler", "Ken Kesey", "John Irving", "Henry James",
-   "Eugene O'Neill", "Jack London", "James Fenimore Cooper", "Carl Sandburg",
-   "Henry Wadsworth Longfellow", "Sylvia Plath", "Carson McCullers",
-   "Pearl S. Buck", "Robert Penn Warren", "S.E. Hinton", "Ayn Rand",
-   "Charles Frazier", "Michael Shaara", "Larry McMurtry", "Sinclair Lewis",
-   "Alice Sebold", "Maya Angelou", "Toni Morrison", "Dashiell Hammett",
-   "Philip Roth", "Thornton Wilder", "Saul Bellow", "John Kennedy Toole",
-   "Stephen Crane", "Tim O'Brien", "Armistead Maupin", "Thomas Pynchon",
-   "Herman Wouk", "James Baldwin", "Langston Hughes", "David Foster Wallace",
-   "Wallace Stegner", "Elmore Leonard", "Bret Easton Ellis", "Jon Krakauer",
-   "T.S. Eliot", "Ralph Waldo Emerson", "William Styron", "Norman Mailer",
-   "Richard Yates"
+   "Richard Rodgers", "Helen Hayes", "Rita Moreno", "John Gielgud", "Audrey Hepburn",
+   "Marvin Hamlisch", "Jonathan Tunick", "Mel Brooks", "Mike Nichols", "Whoopi Goldberg",
+   "Scott Rudin"
 ]
 
 $redis.multi
