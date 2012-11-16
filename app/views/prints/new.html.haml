@@ -19,11 +19,18 @@
               %i.icon-download-alt
               =t("helpers.label.print.url")
               %span.label.label-warning=t("helpers.label.print.beta")
+          %li
+            %a{href: "#3", data: {toggle: "tab"}}
+              %i.icon-folder-open
+              =t("helpers.label.print.dropbox")
+              %span.label.label-warning=t("helpers.label.print.beta")
         .tab-content
           .tab-pane.active{id: "1"}
             = f.file_field(:documents, :multiple => true)
           .tab-pane{id: "2"}
             = f.text_field(:documents, :class => "span4", :multiple => true, :placeholder => t("helpers.label.print.url_placeholder"), value: nil)
+          .tab-pane{id: "3"}
+            = f.hidden_field(:documents, type: "dropbox-chooser", multiple: true)
     .col.span1.divider &raquo;
     .col.span3.print-span
       = f.submit(:class => "btn btn-primary btn-large span3")

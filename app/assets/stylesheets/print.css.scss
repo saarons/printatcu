@@ -6,6 +6,10 @@
     width: 100%;
 }
 
+#print_documents[type="dropbox-chooser"] {
+    visibility: hidden;
+}
+
 .select2-container .status {
     float: left;
     margin-top: 6px;

@@ -14,6 +14,7 @@ en:
                 url: "URL"
                 beta: "Beta"
                 url_placeholder: "Enter a URL to fetch..."
+                dropbox: "Dropbox"
     errors:
         messages:
             no_documents: "are needed for printing"
