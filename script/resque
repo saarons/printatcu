@@ -3,6 +3,8 @@
 require File.expand_path('../../config/boot',  __FILE__)
 require File.expand_path('../../config/environment',  __FILE__)
 
+Rails.logger = Logger.new(STDOUT)
+
 class ResqueWorkerDaemon < DaemonSpawn::Base
   def start(args)
     @worker = Resque::Worker.new("*")
