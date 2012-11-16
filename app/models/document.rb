@@ -59,7 +59,7 @@ class Document < ActiveRecord::Base
     files << Rails.root.join("public/uploads", tempfile) if tempfile
     files << Rails.root.join("public/uploads", tempfile_was) if tempfile_changed? && tempfile_was
     
-    puts "Cleaning #{files}"
+    logger.info "Cleaning #{files.map(&:to_s)}"
     
     FileUtils.rm files
   end
