@@ -1,4 +1,4 @@
 update_statuses:
-  every: "10m"
+  every: 10m
   queue: maintenance
-  class: UpdateStatuses
+  class: UpdateStatusesWorker

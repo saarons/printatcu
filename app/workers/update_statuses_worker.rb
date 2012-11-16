@@ -1,4 +1,4 @@
-class UpdateStatuses
+class UpdateStatusesWorker
   ENDPOINT = "http://www.columbia.edu/acis/facilities/printers/ninja_status.html"
 
   class << self

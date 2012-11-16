@@ -162,6 +162,7 @@ DEPENDENCIES
   daemon-spawn
   dalli
   excon
+  execjs
   gon
   haml
   jquery-rails

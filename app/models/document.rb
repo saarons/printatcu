@@ -1,5 +1,3 @@
-require "execjs"
-
 class Document < ActiveRecord::Base
   belongs_to :print
   
@@ -12,33 +10,47 @@ class Document < ActiveRecord::Base
     response = Excon.get("https://docs.google.com/viewer", :query => {:url => fetch_url})
     gp_url = response.body[/gpUrl:('[^']*')/,1]
     
-    if gp_url
-      pdf_url = ExecJS.eval(gp_url)
+    if status = gp_url.present?
+      self.tempfile = is_url? ? SecureRandom.hex(64) : self.tempfile.gsub(extension, ".pdf")
+
       cookie_jar = Tempfile.new("cookie_jar")
-      self.tempfile = is_url? ? SecureRandom.hex(64) : converted_tempfile
       output_file = Rails.root.join("public/uploads", tempfile).to_s
+      pdf_url = ExecJS.eval(gp_url)
+
       command = ["curl", "-s", "-L", "-c", cookie_jar.path, "-o", output_file, pdf_url]
-      puts "Running #{command}"
-      IO.popen(command) { |f| puts "curl: #{f.gets}" }
-      cookie_jar.close!
-      true
-    else
-      false
+
+      begin
+        IO.popen(command) do |f|
+          logger.info command.join(" ")
+          logger.info f.gets
+        end
+      ensure
+        cookie_jar.close!
+      end
     end
+
+    return status
   end
   
   def enqueue
-    options = {"HPOption_Duplexer" => "True", "HPOption_2000_Sheet_Tray" => "True", "InstalledMemory" => "128-255MB"}
+    options = {
+      "HPOption_Duplexer" => "True",
+      "InstalledMemory" => "128-255MB",
+      "HPOption_2000_Sheet_Tray" => "True"
+    }
 
     options.merge!("sides" => "two-sided-long-edge") if print.double_sided
     options.merge!("Collate" => "True") if print.collate
 
     options_array = options.map { |k,v| v ? ["-o", "#{k}=#{v}"] : ["-o", "#{k}"] }.flatten
-
     path = Rails.root.join("public/uploads", tempfile).to_s
-    command_array = ["lp", "-c", "-E", "-t", filename, "-d", print.printer, "-U", print.user, "-n", print.copies.to_s].concat(options_array) << "--" << path
-    puts "Running #{command_array}"
-    IO.popen(command_array) { |f| puts "lp: #{f.gets}" }
+
+    command = ["lp", "-c", "-E", "-t", filename, "-d", print.printer, "-U", print.user, "-n", print.copies.to_s].concat(options_array) << "--" << path
+
+    IO.popen(command) do |f|
+      logger.info command.join(" ")
+      logger.info f.gets
+    end
   end
   
   def cleanup
@@ -57,10 +69,6 @@ class Document < ActiveRecord::Base
       json = ActiveSupport::JSON.encode({building: print.building})
       Pusher["printatcu"].trigger("print", json)
     end
-  end
-  
-  def converted_tempfile
-    self.tempfile.gsub(extension, ".pdf")
   end
   
   def needs_conversion?
