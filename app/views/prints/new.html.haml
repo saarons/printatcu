@@ -29,7 +29,7 @@
           .tab-pane{id: "2"}
             = f.text_field(:documents, :class => "span4", :multiple => true, :placeholder => t("helpers.label.print.url_placeholder"), value: nil)
           .tab-pane{id: "3"}
-            = f.hidden_field(:documents, type: "dropbox-chooser", multiple: true)
+            = f.hidden_field(:documents, type: "dropbox-chooser", multiple: true, data: {"link-type" => "direct"})
     .col.span1.divider &raquo;
     .col.span3.print-span
       = f.submit(:class => "btn btn-primary btn-large span3")
