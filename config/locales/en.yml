@@ -13,6 +13,7 @@ en:
                 upload: "Upload"
                 url: "URL"
                 beta: "Beta"
+                alpha: "Alpha"
                 url_placeholder: "Enter a URL to fetch..."
                 dropbox: "Dropbox"
     errors:

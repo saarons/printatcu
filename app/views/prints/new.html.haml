@@ -18,12 +18,11 @@
             %a{href: "#2", data: {toggle: "tab"}}
               %i.icon-download-alt
               =t("helpers.label.print.url")
-              %span.label.label-warning=t("helpers.label.print.beta")
           %li
             %a{href: "#3", data: {toggle: "tab"}}
               %i.icon-folder-open
               =t("helpers.label.print.dropbox")
-              %span.label.label-warning=t("helpers.label.print.beta")
+              %span.label.label-important=t("helpers.label.print.alpha")
         .tab-content
           .tab-pane.active{id: "1"}
             = f.file_field(:documents, :multiple => true)
