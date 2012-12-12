@@ -64,6 +64,11 @@ claremntb01a:
   :driver: HP LaserJet 9050 PS
   :location: Residence Halls
   :double_sided: true
+ec01a:
+  :host: ec01a-ninja.atg.columbia.edu
+  :driver: HP LaserJet 9050 Series PS
+  :location: Residence Halls
+  :double_sided: true
 ec10a:
   :host: ec10a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 Series PS
@@ -73,6 +78,11 @@ ec18a:
   :host: ec18a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 Series PS
   :location: Residence Halls
+  :double_sided: true
+et251color:
+  :host: et251color-ninja.atg.columbia.edu
+  :driver: HP Color LaserJet 4700 PS
+  :location: Mudd
   :double_sided: true
 furnald107a:
   :host: furnald107a-ninja.atg.columbia.edu
