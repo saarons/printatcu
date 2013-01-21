@@ -4,9 +4,10 @@
 require File.expand_path("../../config/environment",  __FILE__)
 
 users = [
-   "Richard Rodgers", "Helen Hayes", "Rita Moreno", "John Gielgud", "Audrey Hepburn",
-   "Marvin Hamlisch", "Jonathan Tunick", "Mel Brooks", "Mike Nichols", "Whoopi Goldberg",
-   "Scott Rudin"
+  "Kermit", "Statler", "Waldorf", "Fozzie Bear", "Swedish Chef", "Beaker",
+  "Animal", "Gonzo", "Dr. Bunsen Honeydew", "Rowlf", "Rizzo", "Miss Piggy",
+  "Sam", "Floyd Pepper", "Dr. Teeth", "Janice", "Sweetums", "Pepe", "Camilla",
+  "Crazy Harry", "Scooter", "Zoot", "Mahna Mahna", "Bobo", "Bean Bunny", "Lew Zealand"
 ]
 
 $redis.multi
