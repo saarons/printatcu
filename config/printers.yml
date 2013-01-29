@@ -214,11 +214,6 @@ six00w113a:
   :driver: HP LaserJet 9050 PS
   :location: Residence Halls
   :double_sided: true
-stat902a:
-  :host: stat902a-ninja.atg.columbia.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Statistics
-  :double_sided: true
 watt100a:
   :host: watt100a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
@@ -281,6 +276,11 @@ diana307b:
   :double_sided: true
 diana307c:
   :host: diana307c-ninja.barnard.edu
+  :driver: HP LaserJet 9050 PS
+  :location: Barnard
+  :double_sided: true
+diana307d:
+  :host: diana307d-ninja.barnard.edu
   :driver: HP LaserJet 9050 PS
   :location: Barnard
   :double_sided: true
