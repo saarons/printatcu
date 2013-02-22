@@ -80,7 +80,7 @@ class PrintsController < ApplicationController
   
   def cache_new
     unless params[:success]
-      expires_in 30.minutes, :public => true
+      expires_in 5.minutes, :public => true
     end
   end
 end
