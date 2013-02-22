@@ -214,6 +214,11 @@ six00w113a:
   :driver: HP LaserJet 9050 PS
   :location: Residence Halls
   :double_sided: true
+stat902a:
+  :host: stat902a-ninja.atg.columbia.edu
+  :driver: HP LaserJet 9050 PS
+  :location: Statistics
+  :double_sided: true
 watt100a:
   :host: watt100a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
