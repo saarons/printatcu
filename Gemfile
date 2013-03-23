@@ -11,7 +11,7 @@ gem "mysql2"
 gem "pusher"
 gem "nokogiri"
 gem "jquery-rails"
-gem "rails", "3.2.12"
+gem "rails", "3.2.13"
 gem "daemon-spawn", :require => "daemon_spawn"
 gem "resque", :require => ["resque", "resque/server"]
 gem "shinobi", :git => "git://github.com/saarons/shinobi.git"
