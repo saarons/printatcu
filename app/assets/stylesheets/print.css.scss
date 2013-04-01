@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+    background-image: image-url("background.jpg");
+    background-size: cover;
+}
+
 #print_documents[type="file"] {
     width: 100%;
 }
@@ -60,6 +65,8 @@
 
 #main {
     height: 350px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #FFFFFF;
 }
 
 .col {

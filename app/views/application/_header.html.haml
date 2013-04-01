@@ -1,5 +1,5 @@
 %header.page-header
-  %h1 Print@CU
+  %h1= t("title")
 
 - if flash[:printer] && flash[:user]
   .alert.alert-success.alert-block
@@ -12,11 +12,4 @@
     %ul
       - @print.errors.full_messages.each do |msg|
         %li= msg
-- else
-  .alert.alert-info.alert-block
-    %a.close{data: {dismiss: "alert"}} &times;
-    %strong Worried about Housing?
-    Check out
-    %a{href: "http://www.housingatcu.com", target: "_blank"} Housing@CU
-    and see what your chances are.
     

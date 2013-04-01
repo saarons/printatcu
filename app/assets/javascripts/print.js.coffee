@@ -3,6 +3,8 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $(document).ready ->
+    $.fool "hiddenVideos"
+
     printer = $("#print_printer")
     building = $("#print_building")
 

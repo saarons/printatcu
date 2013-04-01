@@ -10,6 +10,7 @@
 //= require bootstrap-tab
 //= require bootstrap-alert
 //= require select2
+//= require fool
 //= require_tree .
 
 var _gaq = _gaq || [];

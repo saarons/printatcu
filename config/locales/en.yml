@@ -24,6 +24,7 @@ en:
             
     meta_description: "Print@CU is a service that allows Columbia University students to print to any printer on campus."
     something_bad_happened: "Something Bad Happened"
+    title: "Print@Pyongyang"
     success:
         html:
             one:
