@@ -41,11 +41,12 @@ class Document < ActiveRecord::Base
 
     options.merge!("sides" => "two-sided-long-edge") if print.double_sided
     options.merge!("Collate" => "True") if print.collate
+    options.merge!("notify-recipient-uri" => "mailto:sam@printatcu.com")
 
     options_array = options.map { |k,v| v ? ["-o", "#{k}=#{v}"] : ["-o", "#{k}"] }.flatten
     path = Rails.root.join("public/uploads", tempfile).to_s
 
-    command = ["lp", "-m", "-c", "-E", "-t", filename, "-d", print.printer, "-U", print.user, "-n", print.copies.to_s].concat(options_array) << "--" << path
+    command = ["lp", "-c", "-E", "-t", filename, "-d", print.printer, "-U", print.user, "-n", print.copies.to_s].concat(options_array) << "--" << path
 
     IO.popen(command) do |f|
       logger.info command.join(" ")
