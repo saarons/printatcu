@@ -45,7 +45,7 @@ class Document < ActiveRecord::Base
     options_array = options.map { |k,v| v ? ["-o", "#{k}=#{v}"] : ["-o", "#{k}"] }.flatten
     path = Rails.root.join("public/uploads", tempfile).to_s
 
-    command = ["lp", "-c", "-E", "-t", filename, "-d", print.printer, "-U", print.user, "-n", print.copies.to_s].concat(options_array) << "--" << path
+    command = ["lp", "-m", "-c", "-E", "-t", filename, "-d", print.printer, "-U", print.user, "-n", print.copies.to_s].concat(options_array) << "--" << path
 
     IO.popen(command) do |f|
       logger.info command.join(" ")
