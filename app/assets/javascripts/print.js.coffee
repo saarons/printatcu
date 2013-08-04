@@ -29,7 +29,7 @@ $(document).ready ->
         
     building.change (event) -> change_printers(event.val)
         
-    if !defaults && (p = $.cookie("printer")) && (b = $.cookie("building"))
-        building.select2("val", b)
-        change_printers(b)
-        printer.select2("val", p)
+    # if !defaults && (p = $.cookie("printer")) && (b = $.cookie("building"))
+    #     building.select2("val", b)
+    #     change_printers(b)
+    #     printer.select2("val", p)

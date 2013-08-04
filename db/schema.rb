@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(:version => 20120926065629) do
     t.integer  "print_id"
     t.string   "filename"
     t.string   "tempfile"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "url"
   end
 
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(:version => 20120926065629) do
     t.string   "printer"
     t.string   "user"
     t.boolean  "double_sided", :default => true
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.boolean  "collate"
     t.integer  "copies"
     t.string   "ip"
