@@ -15,7 +15,9 @@ class Document < ActiveRecord::Base
   end
 
   def needs_conversion?
-    !self.filename.end_with?('.pdf')
+    DIRECT_EXTENSIONS.none? do |extension|
+      self.filename.end_with?(extension)
+    end
   end
   
   def convert
