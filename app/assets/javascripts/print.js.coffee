@@ -19,6 +19,7 @@ $(document).ready ->
         formatResult: format
         formatSelection: format
         minimumResultsForSearch: NaN
+
     building.select2
         width: "off"
 
