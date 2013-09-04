@@ -42,7 +42,35 @@ footer {
 }
 
 .select2-container {
-    width: 100%;
+  width: 100%;
+}
+
+.select2-container .status {
+  float: left;
+  margin-top: 6px;
+  margin-right: -15px;  
+}
+
+.select2-results .status {
+  margin-right: 6px;
+}
+
+.status.green {
+  background-color: #3ADC1C;
+}
+
+.status {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+}
+
+.status.red {
+  background-color: #C00000;
+}
+
+.status.yellow {
+  background-color: #F0F090;
 }
 
 .printatcu-dragdrop {
