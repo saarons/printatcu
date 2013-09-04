@@ -8,7 +8,7 @@
 //= require jquery_ujs
 //= require cookie
 //= require select2
-//= require bootstrap
+//= require twitter/bootstrap
 //= require_tree .
 
 var _gaq = _gaq || [];

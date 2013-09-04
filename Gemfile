@@ -1,6 +1,7 @@
 source "http://rubygems.org"
 
 gem "gon"
+gem "thin"
 gem "mina"
 gem "haml"
 gem "dalli"
@@ -12,6 +13,7 @@ gem "pusher"
 gem "nokogiri"
 gem "jquery-rails"
 gem "rails", "3.2.13"
+gem "bootstrap-sass-rails"
 gem "daemon-spawn", :require => "daemon_spawn"
 gem "resque", :require => ["resque", "resque/server"]
 gem "shinobi", :git => "git://github.com/saarons/shinobi.git"

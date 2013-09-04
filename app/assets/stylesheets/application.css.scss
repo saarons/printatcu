@@ -1,55 +1,9 @@
-@import "bootstrap";
+$navbar-default-bg: #75B2DD;
+$navbar-default-brand-color: #FFF;
+$navbar-default-brand-hover-color: #FFF;
+
+$font-family-sans-serif: 'Open Sans', sans-serif;
+
+@import "twitter/bootstrap";
 @import "select2";
-// @import "credits";
-// @import "print";
-
-.choose-destination {
-  text-align: center;
-}
-
-.divider {
-  font-family: 'Ubuntu';
-  font-size: 100px;
-  line-height: 0px;
-  text-align: center;
-}
-
-footer {
-    margin-top: 18px;
-    padding-top: 17px;
-    border-top: 1px solid #EEE;
-
-    p {
-      text-align: center;
-
-      a {
-        color: #404040;
-      }
-
-      a:hover {
-        color: #404040;
-      }
-    }
-
-    .disclaimer {
-      font-size: 8pt;
-      color: #BBBBBB;
-    }
-
-    .disclaimer a {
-      color: #BBBBBB;
-    }
-
-    .disclaimer a:hover {
-      color: #BBBBBB;
-    }
-}
-
-.select2-container {
-    width: 100%;
-}
-
-.printatcu-dragdrop {
-  text-align: center;
-  margin: 6px 0px 0px 0px !important;
-}
+@import "print";

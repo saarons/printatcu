@@ -1,147 +1,52 @@
-// Place all the styles related to the print controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-#print_documents[type="file"] {
-    width: 100%;
-}
-
-#print_documents[type="dropbox-chooser"] {
-    visibility: hidden;
-}
-
-.select2-container .status {
-    float: left;
-    margin-top: 6px;
-    margin-right: -15px;
-    
-}
-
-.select2-results .status {
-    margin-right: 6px;
-}
-
-.status.green {
-    background-color: #3ADC1C;
-}
-
-.status {
-    width: 15px;
-    height: 15px;
-    display: inline-block;
-}
-
-.status.red {
-    background-color: #C00000;
-}
-
-.status.yellow {
-    background-color: #F0F090;
-}
-
-.select2-container {
-    width: 100%;
-}
-
-.print-options {
-    width: 100%;
-    margin-top: 4px;
+.choose-destination {
+  text-align: center;
 }
 
 .divider {
-    font-size: 100px;
-    text-align: center;
-}
-
-.input-micro {
-    width: 30px;
-    display: inline-block;
-}
-
-#main {
-    height: 350px;
-}
-
-.col {
-    top: 50%;
-    position: relative;
-}
-
-.choice-span {
-    text-align: center;
-    margin-top: -15px;
-}
-
-.file-span {
-    margin-top: -50px;
-}
-
-.page-header h1 {
-    text-align: center;
+  font-family: 'Ubuntu';
+  font-size: 100px;
+  line-height: 0px;
+  text-align: center;
+  margin-top: 60px;
 }
 
 footer {
     margin-top: 18px;
     padding-top: 17px;
     border-top: 1px solid #EEE;
-}
 
-footer p {
-    text-align: center;
-}
+    p {
+      text-align: center;
 
-footer p a {
-    color: #404040;
-}
+      a {
+        color: #404040;
+      }
 
-footer p a:hover {
-    color: #404040;
-}
-
-#disclaimer {
-    font-size: 8pt;
-    color: #BBBBBB;
-}
-
-#disclaimer a {
-    color: #BBBBBB;
-}
-
-#disclaimer a:hover {
-    color: #BBBBBB;
-}
-
-input, input::-webkit-input-placeholder, input:-moz-placeholder {
-    color: #404040
-}
-
-@media (min-width: 768px) and (max-width: 979px) {
-    .divider {
-        display: none !important;
+      a:hover {
+        color: #404040;
+      }
     }
-    
-    .print-span {
-        margin-top: -20px;
+
+    .disclaimer {
+      font-size: 8pt;
+      color: #BBBBBB;
     }
-    
-    .input-micro {
-        width: 20px;
-        margin-left: 4px;
-        display: inline-block;
+
+    .disclaimer a {
+      color: #BBBBBB;
+    }
+
+    .disclaimer a:hover {
+      color: #BBBBBB;
     }
 }
 
-@media (max-width: 767px) {
-    .divider {
-        display: none !important;
-    }
-    
-    .col {
-        top: 0;
-        margin-top: 7.5% !important;
-    }
-    
-    #main {
-        height: auto;
-    }
+.select2-container {
+    width: 100%;
+}
+
+.printatcu-dragdrop {
+  text-align: center;
+  line-height: 90px !important;
+  margin: 6px 0px 0px 0px !important;
 }
