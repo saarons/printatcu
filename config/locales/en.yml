@@ -10,18 +10,6 @@ en:
                 collate: "Collated?"
                 copies: "Number Of Copies:"
                 double_sided: "Double-sided?"
-                upload: "Upload"
-                url: "URL"
-                beta: "Beta"
-                alpha: "Alpha"
-                url_placeholder: "Enter a URL to fetch..."
-                dropbox: "Dropbox"
-    errors:
-        messages:
-            no_documents: "are needed for printing"
-            unable_to_print: "%{filename} can't be printed"
-            invalid_extension: "must end with a valid extension (%{list})"
-            
     meta_description: "Print@CU is a service that allows Columbia University students to print to any printer on campus."
     something_bad_happened: "Something Bad Happened"
     title: "Print@CU"
@@ -31,6 +19,5 @@ en:
                 "Your document has been successfully sent to <strong>%{printer}</strong> under the pseudonym \"<strong>%{user}</strong>\"."
             other:
                 "Your documents have been successfully sent to <strong>%{printer}</strong> under the pseudonym \"<strong>%{user}</strong>\"."
-          
     disclaimer_html:
         "Please be aware that when your document is pushed from this server to the Columbia printers, we cannot guarantee the security or privacy of your document.  Non-PDF documents will first be sent to Google for conversion.  See <a href=\"http://www.google.com/policies/privacy/\">Google's privacy policy</a> for retention terms."

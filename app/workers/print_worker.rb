@@ -3,6 +3,7 @@ class PrintWorker
 
   def self.perform(document_id)
     document = Document.find(document_id)
+    document.fetch
     
     ok = document.needs_conversion? ? document.convert : true
 

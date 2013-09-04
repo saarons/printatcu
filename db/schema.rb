@@ -11,12 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120926065629) do
+ActiveRecord::Schema.define(:version => 20130904190048) do
 
   create_table "documents", :force => true do |t|
     t.integer  "print_id"
     t.string   "filename"
-    t.string   "tempfile"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "url"

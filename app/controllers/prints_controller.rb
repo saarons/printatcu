@@ -8,10 +8,10 @@ class PrintsController < ApplicationController
   
   def create    
     @print = Print.new(params[:print])
-    @print.user = get_user
     @print.ip = get_ip
+    @print.user = get_user
 
-    build_documents(@print, params[:documents])
+    @print.build_documents(params[:urls])
 
     respond_to do |format|
       if success = @print.save
@@ -29,11 +29,13 @@ class PrintsController < ApplicationController
   
   private
   def sanitize_input
+    params[:urls] = if params[:urls].blank?
+      []
+    else
+      params[:urls].split(",").reject(&:blank?)
+    end    
+
     params[:print] ||= {}
-    params[:print][:documents] ||= []
-    params[:print][:documents].reject!(&:blank?)
-    params[:print][:documents].reject! { |d| d == "[]" }
-    params[:documents] = params[:print].delete(:documents)
     params[:print][:copies] = 1 if params[:print][:copies].blank?
   end
 
@@ -43,21 +45,6 @@ class PrintsController < ApplicationController
 
   def get_ip
     request.headers["X-Real-IP"] if Rails.env.production?
-  end
-
-  def build_documents(print, documents)
-    documents.each do |document|
-      doc = print.documents.build
-      
-      case document
-      when String
-        doc.url = document
-        doc.filename = document
-      else
-        doc.filename = document.try(:original_filename)
-        doc.tempfile = document.try(:tempfile).try(:path)
-      end
-    end
   end
 
   def set_flash(print)
