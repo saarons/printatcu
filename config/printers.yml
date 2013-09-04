@@ -209,6 +209,11 @@ schermerhorn558a:
   :driver: HP LaserJet 9050 PS
   :location: Schermerhorn
   :double_sided: true
+sicb01a:
+  :host: sicb01a-ninja.atg.columbia.edu
+  :driver: HP LaserJet 9050 PS
+  :location: SIC
+  :double_sided: true
 six00w113a:
   :host: six00w113a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
@@ -256,11 +261,6 @@ brooks100a:
   :double_sided: true
 brooks100b:
   :host: brooks100b-ninja.barnard.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Barnard
-  :double_sided: true
-dcc413a:
-  :host: dcc413a-ninja.barnard.edu
   :driver: HP LaserJet 9050 PS
   :location: Barnard
   :double_sided: true
@@ -436,16 +436,6 @@ uris130a:
   :double_sided: true
 uris130b:
   :host: uris130b-ninja.atg.columbia.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Uris
-  :double_sided: true
-uris130c:
-  :host: uris130c-ninja.atg.columbia.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Uris
-  :double_sided: true
-uris130d:
-  :host: uris130d-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
   :location: Uris
   :double_sided: true
