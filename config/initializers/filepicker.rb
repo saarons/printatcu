@@ -9,7 +9,7 @@ class Filepicker
   def policy(call, options = {})
     policy = {expiry: Time.now.to_i + (60*60*24), call: call}
     policy.merge!(options)
-    Base64.urlsafe_encode64(JSON.dumps(policy))
+    Base64.urlsafe_encode64(JSON.dump(policy))
   end
 
   def sign(policy)
