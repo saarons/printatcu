@@ -22,8 +22,10 @@
   </div>
   <div class="col-sm-1 col-lg-1"><br><span class="hidden-xs divider">&raquo;</span></div>
   <div class="col-sm-4 col-lg-4">
-    <% policy = $filepicker.policy('pick') %>
-    <% signature = $filepicker.sign(policy) %>
+    <%
+      policy = $filepicker.policy('pick')
+      signature = $filepicker.sign(policy)
+    %>
     <input id="filepicker" name="urls" data-fp-policy="<%= policy %>" data-fp-signature="<%= signature %>" data-fp-apikey="<%= $filepicker.api_key %>" type="filepicker-dragdrop" data-fp-multiple="true" data-fp-drag-class="col-xs-12 printatcu-dragdrop" data-fp-extensions="<%= ALL_EXTENSIONS.join(",") %>" data-fp-button-class="btn btn-primary btn-block btn-lg"/>
   </div>
   <div class="col-sm-1 col-lg-1"><br><span class="hidden-xs divider">&raquo;<br><br></span></div>
