@@ -4,7 +4,7 @@ class Document < ActiveRecord::Base
 
   def fetch
     policy = $filepicker.policy('read')
-    signature = $filepicker.signature(policy)
+    signature = $filepicker.sign(policy)
     response = Excon.get(self.url, query: {policy: policy, signature: signature})
 
     self.filename = response.headers["X-File-Name"]
@@ -24,7 +24,7 @@ class Document < ActiveRecord::Base
   
   def convert
     policy = $filepicker.policy('read')
-    signature = $filepicker.signature(policy)
+    signature = $filepicker.sign(policy)
     actual_url = "#{self.url}?policy=#{policy}&signature=#{signature}"
     
     response = Excon.get("https://docs.google.com/viewer", :query => {:url => actual_url})
@@ -80,7 +80,7 @@ class Document < ActiveRecord::Base
     self.tempfile.unlink
 
     policy = $filepicker.policy('remove')
-    signature = $filepicker.signature(policy)
+    signature = $filepicker.sign(policy)
     Excon.delete(self.url, query: {policy: policy, signature: signature})
   end
 end
