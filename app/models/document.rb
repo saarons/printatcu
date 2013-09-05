@@ -3,7 +3,9 @@ class Document < ActiveRecord::Base
   attr_accessor :tempfile
 
   def fetch
-    response = Excon.get(self.url)
+    policy = $filepicker.policy('read')
+    signature = $filepicker.signature(policy)
+    response = Excon.get(self.url, query: {policy: policy, signature: signature})
 
     self.filename = response.headers["X-File-Name"]
 
@@ -21,7 +23,11 @@ class Document < ActiveRecord::Base
   end
   
   def convert
-    response = Excon.get("https://docs.google.com/viewer", :query => {:url => self.url})
+    policy = $filepicker.policy('read')
+    signature = $filepicker.signature(policy)
+    actual_url = "#{self.url}?policy=#{policy}&signature=#{signature}"
+    
+    response = Excon.get("https://docs.google.com/viewer", :query => {:url => actual_url})
     gp_url = response.body[/gpUrl:('[^']*')/,1]
     
     if status = gp_url.present?
@@ -72,6 +78,9 @@ class Document < ActiveRecord::Base
 
   def cleanup
     self.tempfile.unlink
-    Excon.delete(self.url)
+
+    policy = $filepicker.policy('remove')
+    signature = $filepicker.signature(policy)
+    Excon.delete(self.url, query: {policy: policy, signature: signature})
   end
 end
