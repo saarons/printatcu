@@ -3,7 +3,7 @@ class Document < ActiveRecord::Base
   attr_accessor :tempfile
 
   def fetch
-    response = Excon.get(url)
+    response = Excon.get(self.url)
 
     self.filename = response.headers["X-File-Name"]
 
@@ -72,5 +72,6 @@ class Document < ActiveRecord::Base
 
   def cleanup
     self.tempfile.unlink
+    Excon.delete(self.url)
   end
 end
