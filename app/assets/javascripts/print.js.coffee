@@ -6,8 +6,6 @@ $(document).ready ->
   printer = $("#print_printer")
   building = $("#print_building")
 
-  $("#new_print").submit (event) -> mixpanel.track("Print")
-
   format = (selection) ->
     status = gon.status[selection.id]
     image = if status then "<img class='status #{status}' />" else ""
@@ -27,7 +25,7 @@ $(document).ready ->
     printer.append($("<option></option>").attr("value", p).text(p)) for p in gon.printers[slug]
     printer.select2("val", gon.printers[slug][0])
         
-    building.change (event) -> change_printers(event.val)
+  building.change (event) -> change_printers(event.val)
         
   # if !defaults && (p = $.cookie("printer")) && (b = $.cookie("building"))
   #   building.select2("val", b)
