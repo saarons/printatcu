@@ -1,22 +1,7 @@
-<nav class="navbar navbar-default" role="navigation">
-  <div class="navbar-header">
-    <a class="navbar-brand" href="#">Print@CU</a>
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="<%= root_path %>">Print@CU</a>
+    </div>
   </div>
 </nav>
-
-<% if flash[:printer] && flash[:user] %>
-  <div class="alert alert-success alert-dismissable">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <%= t("success.html", :count => flash[:count], :printer => flash[:printer], :user => flash[:user]) %>
-  </div>
-<% elsif @print.errors.any? %>
-  <div class="alert alert-danger alert-dismissable">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong><%= t(:something_bad_happened) %></strong>
-    <ul>
-      <% @print.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>

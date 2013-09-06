@@ -1,6 +1,25 @@
+<div class="container">
+
 <script>
   var defaults = <%= (!!choose_building).to_s %>;
 </script>
+
+<% if flash[:printer] && flash[:user] %>
+  <div class="alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <%= t("success.html", :count => flash[:count], :printer => flash[:printer], :user => flash[:user]) %>
+  </div>
+<% elsif @print.errors.any? %>
+  <div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong><%= t(:something_bad_happened) %></strong>
+    <ul>
+      <% @print.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <%= form_for @print do |f| %>
 
@@ -53,3 +72,5 @@
 </div>
 
 <% end %>
+
+</div>

@@ -1,4 +1,7 @@
 <footer>
-  <p class="disclaimer"><%= t(:disclaimer_html) %>
-  <p>&copy; <%= mail_to "sia2111@columbia.edu", "Sam Aarons", :encode => "hex" %> <%= Time.zone.now.strftime("%Y") %></p>
+  <div class="container">
+    <p class="text-muted credit">
+      &copy; <%= mail_to "sia2111@columbia.edu", "Sam Aarons", :encode => "hex" %> <%= Time.zone.now.strftime("%Y") %>.
+    </p>
+  </div>
 </footer>
