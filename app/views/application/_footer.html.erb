@@ -1,7 +1,26 @@
+<div class="modal fade" id="privacyModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Privacy Policy</h4>
+      </div>
+      <div class="modal-body disclaimer">
+        Please be aware that when your document is pushed from this server to the Columbia printers, we cannot guarantee the security or privacy of your document.
+        File uploading is handled through the third-party service <a href="https://www.inkfilepicker.com/">Ink</a>, a copy of their privacy policy may be found <a href="https://www.inkfilepicker.com/privacy/">here</a>.
+        Non-PDF documents will also be sent to Google for the purposes of conversion.  See <a href="http://www.google.com/policies/privacy/">Google's privacy policy</a> for retention terms.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="container">
     <p class="text-muted credit">
-      &copy; <%= mail_to "sia2111@columbia.edu", "Sam Aarons", :encode => "hex" %> <%= Time.zone.now.strftime("%Y") %>.
+      &copy; <%= mail_to "sia2111@columbia.edu", "Sam Aarons", :encode => "hex" %> <%= Time.zone.now.strftime("%Y") %> | <a href="#privacyModal" data-toggle="modal">Privacy Policy</a>
     </p>
   </div>
 </footer>
