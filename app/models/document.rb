@@ -7,7 +7,7 @@ class Document < ActiveRecord::Base
     signature = $filepicker.sign(policy)
     response = Excon.get(self.url, query: {policy: policy, signature: signature})
 
-    self.filename = response.headers["X-File-Name"]
+    self.filename = response.headers["X-File-Name"] || "Untitled"
 
     self.tempfile = Tempfile.new(self.filename, encoding: 'ascii-8bit')
     self.tempfile.write(response.body)
