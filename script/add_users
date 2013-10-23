@@ -6,9 +6,9 @@ require File.expand_path("../../config/environment",  __FILE__)
 users = [
   "Shifty Moon",
   "Waffle Shuffle",
-  "Lee C Bollinger",
+  "Lee C. Bollinger",
   "Geetika Rudra",
-  "George Alexander Louis",
+  "Prince George Alexander Louis",
   "Ted Bundy",
   "Happy Belated Claire Parker"
 ]
