@@ -2,15 +2,13 @@ require "mina/bundler"
 require "mina/rails"
 require "mina/git"
 
-
-set :domain, "doug@columbiaspectator.com"
-set :deploy_to, "/var/www/vhosts/printatcu.com"
-set :repository, "git@github.com:spectatorpublishing/printatcu.git"
+set :user, "saarons"
+set :domain, "columbiaspectator.com"
+set :deploy_to, "/var/www/vhosts/columbiaspectator.com/httpdocs/printatcu"
+set :repository, "https://github.com/spectatorpublishing/printatcu.git"
 set :branch, "master"
 
 set :shared_paths, ["config/database.yml", "log", "public/uploads", "tmp/pids", "tmp/sockets"]
-
-
 
 task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/log"]
