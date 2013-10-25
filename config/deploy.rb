@@ -4,7 +4,7 @@ require "mina/git"
 
 set :user, "saarons"
 set :domain, "columbiaspectator.com"
-set :deploy_to, "/var/www/vhosts/columbiaspectator.com/httpdocs/printatcu"
+set :deploy_to, "/var/www/vhosts/printatcu.com/httpdocs"
 set :repository, "https://github.com/spectatorpublishing/printatcu.git"
 set :branch, "master"
 
