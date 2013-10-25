@@ -1,6 +1,7 @@
 require "mina/bundler"
 require "mina/rails"
 require "mina/git"
+require "mina/rvm"
 
 set :user, "saarons"
 set :domain, "columbiaspectator.com"
@@ -9,6 +10,12 @@ set :repository, "https://github.com/spectatorpublishing/printatcu.git"
 set :branch, "master"
 
 set :shared_paths, ["config/database.yml", "log", "public/uploads", "tmp/pids", "tmp/sockets"]
+
+set :rvm_path, "/usr/local/rvm/scripts/rvm"
+
+task :environment do
+  invoke :'rvm:use[ruby-1.9.3]'
+end
 
 task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/log"]
