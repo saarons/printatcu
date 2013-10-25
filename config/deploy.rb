@@ -76,7 +76,7 @@ end
 namespace :unicorn do
   task :start => :environment do
     queue "cd #{deploy_to}/#{current_path}"
-    queue "SHARED_PATH=#{deploy_to}/shared UNICORN_PWD=#{deploy_to}/#{current_path} bin/unicorn -c config/unicorn.rb -E #{rails_env} -D"
+    queue "UNICORN_PWD=#{deploy_to}/#{current_path} bin/unicorn -c config/unicorn.rb -E #{rails_env} -D"
   end
 
   task :restart do
