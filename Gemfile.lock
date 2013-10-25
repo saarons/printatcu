@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/saarons/shinobi.git
-  revision: 83a8fce0e0b535bc76f248fa5f894c8c5e73d84e
+  revision: 359ecfa10f7de275f442ac7ddd9723eee507f130
   specs:
-    shinobi (0.2.0)
+    shinobi (0.2.1)
       cups
       multi_json
 
@@ -82,7 +82,7 @@ GEM
       open4
       rake
     mono_logger (1.1.0)
-    multi_json (1.7.9)
+    multi_json (1.8.2)
     mysql2 (0.3.13)
     nokogiri (1.5.10)
     open4 (1.3.0)
