@@ -10,7 +10,7 @@ Printatcu::Application.configure do
   # config.action_dispatch.rack_cache        = {metastore: "memcached://localhost:11211/printatcu/meta", entitystore: "memcached://localhost:11211/printatcu/body", verbose: true}
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
