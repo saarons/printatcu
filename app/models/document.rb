@@ -42,8 +42,9 @@ class Document < ActiveRecord::Base
     return false unless pdf_url
 
     cookie_jar = Tempfile.new("cookie_jar")
+    pdf_tempfile = Tempfile.new(self.filename)
 
-    command = ["curl", "-s", "-L", "-c", cookie_jar.path, "-o", self.tempfile.path, pdf_url]
+    command = ["curl", "-s", "-L", "-c", cookie_jar.path, "-o", pdf_tempfile.path, pdf_url]
 
     begin
       IO.popen(command) do |f|
@@ -54,11 +55,15 @@ class Document < ActiveRecord::Base
       cookie_jar.close!
     end
 
-    command = ["pdftops", self.tempfile.path, self.tempfile.path]
-    
-    IO.popen(command) do |f|
-      logger.info command.join(" ")
-      logger.info f.gets
+    command = ["pdftops", pdf_tempfile.path, self.tempfile.path]
+
+    begin
+      IO.popen(command) do |f|
+        logger.info command.join(" ")
+        logger.info f.gets
+      end
+    ensure
+      pdf_tempfile.close!
     end
 
     true
