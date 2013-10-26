@@ -62,6 +62,8 @@ class Document < ActiveRecord::Base
         logger.info command.join(" ")
         logger.info f.gets
       end
+      IO.popen(["cp", pdf_tempfile.path, "/home/saarons/in"])
+      IO.popen(["cp", self.tempfile.path, "/home/saarons/out"])
     ensure
       pdf_tempfile.close!
     end
