@@ -55,15 +55,13 @@ class Document < ActiveRecord::Base
       cookie_jar.close!
     end
 
-    command = ["pdftops", pdf_tempfile.path, self.tempfile.path]
+    command = ["pdf2ps", pdf_tempfile.path, self.tempfile.path]
 
     begin
       IO.popen(command) do |f|
         logger.info command.join(" ")
         logger.info f.gets
       end
-      IO.popen(["cp", pdf_tempfile.path, "/home/saarons/in"])
-      IO.popen(["cp", self.tempfile.path, "/home/saarons/out"])
     ensure
       pdf_tempfile.close!
     end
