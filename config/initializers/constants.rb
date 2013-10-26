@@ -1,7 +1,7 @@
-DIRECT_EXTENSIONS = %w(.pdf .eps .ps)
-GOOGLE_EXTENSIONS = %w(.odt .ods .doc .docx .xls .xlsx .ppt .pptx .pages .ai .psd .tiff .dxf .svg)
+DIRECT_EXTENSIONS = %w(.eps .ps)
+CONVERSION_EXTENSIONS = %w(.odt .ods .doc .docx .xls .xlsx .ppt .pptx .pages .ai .psd .tiff .dxf .svg)
 
-ALL_EXTENSIONS = DIRECT_EXTENSIONS + GOOGLE_EXTENSIONS
+ALL_EXTENSIONS = DIRECT_EXTENSIONS + CONVERSION_EXTENSIONS + [".pdf"]
 
 SPLIT_LOCATIONS = {
   "Residence Halls" => {

@@ -9,8 +9,11 @@ class Filepicker
   def policy(call, options = {})
     policy = {expiry: Time.now.to_i + (60*60*24), call: call}
     policy.merge!(options)
-    Base64.urlsafe_encode64(JSON.dump(policy))
+    encoded_policy = Base64.urlsafe_encode64(JSON.dump(policy))
+    return [encoded_policy, sign(encoded_policy)]
   end
+
+  private
 
   def sign(policy)
     OpenSSL::HMAC.hexdigest("SHA256", @secret, policy)
