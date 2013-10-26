@@ -55,7 +55,7 @@ class Document < ActiveRecord::Base
       cookie_jar.close!
     end
 
-    command = ["pdf2ps", pdf_tempfile.path, self.tempfile.path]
+    command = ["pdftops", "-eps", pdf_tempfile.path, self.tempfile.path]
 
     begin
       IO.popen(command) do |f|
