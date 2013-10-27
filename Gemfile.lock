@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/saarons/shinobi.git
-  revision: 359ecfa10f7de275f442ac7ddd9723eee507f130
+  revision: 26ee244705f3b96b23747fd94fcb688f85d281e3
   specs:
-    shinobi (0.2.1)
+    shinobi (0.2.2)
       cups
       multi_json
 
