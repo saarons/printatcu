@@ -20,31 +20,22 @@ class Document < ActiveRecord::Base
       self.filename.end_with?(extension)
     end
   end
-
-  def needs_google_conversion?
-    CONVERSION_EXTENSIONS.any? do |extension|
-      self.filename.end_with?(extension)
-    end
-  end
   
   def convert
     policy, signature = $filepicker.policy('read')
     actual_url = "#{self.url}?policy=#{policy}&signature=#{signature}"
 
-    pdf_url = if needs_google_conversion?
+    pdf_url = begin
       response = Excon.get("https://docs.google.com/viewer", :query => {:url => actual_url})
       gp_url = response.body[/gpUrl:('[^']*')/,1]
       ExecJS.eval(gp_url) if gp_url.present?
-    else
-      actual_url
     end
 
     return false unless pdf_url
 
     cookie_jar = Tempfile.new("cookie_jar")
-    pdf_tempfile = Tempfile.new(self.filename)
 
-    command = ["curl", "-s", "-L", "-c", cookie_jar.path, "-o", pdf_tempfile.path, pdf_url]
+    command = ["curl", "-s", "-L", "-c", cookie_jar.path, "-o", self.tempfile.path, pdf_url]
 
     begin
       IO.popen(command) do |f|
@@ -55,18 +46,7 @@ class Document < ActiveRecord::Base
       cookie_jar.close!
     end
 
-    command = ["pdftops", "-eps", pdf_tempfile.path, self.tempfile.path]
-
-    begin
-      IO.popen(command) do |f|
-        logger.info command.join(" ")
-        logger.info f.gets
-      end
-    ensure
-      pdf_tempfile.close!
-    end
-
-    true
+    return true
   end
   
   def enqueue
