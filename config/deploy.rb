@@ -3,9 +3,9 @@ require "mina/rails"
 require "mina/git"
 require "mina/rvm"
 
-set :user, "saarons"
-set :domain, "columbiaspectator.com"
-set :deploy_to, "/home/saarons/printatcu"
+set :user, "deploy"
+set :domain, "162.243.106.157"
+set :deploy_to, "/var/www/printatcu"
 set :repository, "https://github.com/spectatorpublishing/printatcu.git"
 set :branch, "master"
 
@@ -14,7 +14,7 @@ set :shared_paths, ["config/database.yml", "log", "public/uploads", "tmp/pids", 
 set :rvm_path, "/usr/local/rvm/scripts/rvm"
 
 task :environment do
-  invoke :'rvm:use[ruby-1.9.3]'
+  invoke :'rvm:use[ruby-2.0.0]'
 end
 
 task :setup => :environment do
