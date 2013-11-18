@@ -44,7 +44,7 @@ class PrintsController < ApplicationController
   end
 
   def get_ip
-    request.headers["X-Real-IP"] if Rails.env.production?
+    request.ip if Rails.env.production?
   end
 
   def set_flash(print)
