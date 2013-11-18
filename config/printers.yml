@@ -44,6 +44,11 @@ butler403a:
   :driver: HP LaserJet 9050 PS
   :location: Butler
   :double_sided: true
+campbell505a:
+  :host: campbell505a-ninja.atg.columbia.edu
+  :driver: HP LaserJet 9050 PS
+  :location: Baker Athletics Complex
+  :double_sided: true
 carlton100a:
   :host: carlton100a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
@@ -264,6 +269,11 @@ brooks100b:
   :driver: HP LaserJet 9050 PS
   :location: Barnard
   :double_sided: true
+dcc413a:
+  :host: dcc413a-ninja.barnard.edu
+  :driver: HP LaserJet 9050 PS
+  :location: Barnard
+  :double_sided: true
 dcc413b:
   :host: dcc413b-ninja.barnard.edu
   :driver: HP LaserJet 9050 PS
@@ -401,11 +411,6 @@ nwcb400a:
   :double_sided: true
 nwcb400b:
   :host: nwcb400b-ninja.atg.columbia.edu
-  :driver: HP LaserJet P4515
-  :location: Northwest Corner Building
-  :double_sided: true
-nwcb600a:
-  :host: nwcb600a-ninja.atg.columbia.edu
   :driver: HP LaserJet P4515
   :location: Northwest Corner Building
   :double_sided: true
