@@ -4,13 +4,38 @@
 require File.expand_path("../../config/environment",  __FILE__)
 
 users = [
-  "Shifty Moon",
-  "Waffle Shuffle",
-  "Lee C. Bollinger",
-  "Geetika Rudra",
-  "Prince George Alexander Louis",
-  "Slutty Lobster",
-  "Happy Belated Claire Parker"
+  "Tyrion Lannister",
+  "Jaime Lannister",
+  "Cersei Lannister",
+  "Daenerys Targaryen",
+  "Jon Snow",
+  "Jorah Mormont",
+  "Petyr Baelish",
+  "Tywin Lannister",
+  "Davos Seaworth",
+  "Stannis Baratheon",
+  "Margaery Tyrell",
+  "Melisandre",
+  "Bran Stark",
+  "Sansa Stark",
+  "Arya Stark",
+  "Theon Greyjoy",
+  "Joffrey Baratheon",
+  "Samwell Tarly",
+  "Gendry",
+  "Ygritte",
+  "Shae",
+  "Sandor Clegane",
+  "Varys",
+  "Bronn",
+  "Robb Stark",
+  "Catelyn Stark",
+  "Talisa Stark",
+  "Jeor Mormont",
+  "Eddard Stark",
+  "Robert Baratheon",
+  "Viserys Targaryen",
+  "Khal Drogo"
 ]
 
 $redis.multi
