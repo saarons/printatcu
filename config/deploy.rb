@@ -4,7 +4,7 @@ require "mina/git"
 require "mina/rvm"
 
 set :user, "deploy"
-set :domain, "162.243.106.157"
+set :domain, "162.243.219.89"
 set :deploy_to, "/var/www/printatcu"
 set :repository, "https://github.com/spectatorpublishing/printatcu.git"
 set :branch, "master"
