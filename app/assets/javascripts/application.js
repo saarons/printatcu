@@ -30,3 +30,7 @@ var _gauges = _gauges || [];
   var s = document.getElementsByTagName('script')[0];
   s.parentNode.insertBefore(t, s);
 })();
+
+var OX_731328f5e6 = OX();
+OX_731328f5e6.addPage("536870958");
+OX_731328f5e6.fetchAds();
