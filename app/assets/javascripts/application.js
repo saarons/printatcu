@@ -8,7 +8,7 @@
 //= require jquery_ujs
 //= require cookie
 //= require select2
-//= require twitter/bootstrap
+//= require bootstrap
 //= require_tree .
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
