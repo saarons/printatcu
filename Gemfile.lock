@@ -131,8 +131,8 @@ GEM
       redis (>= 2.0.1)
       resque (>= 1.20.0)
       rufus-scheduler
-    rufus-scheduler (3.0.6)
-      tzinfo
+    rufus-scheduler (2.0.24)
+      tzinfo (>= 0.3.22)
     sass (3.2.14)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -190,6 +190,7 @@ DEPENDENCIES
   redis
   resque (= 1.24.1)
   resque-scheduler (= 2.0.1)
+  rufus-scheduler (~> 2.0.24)
   sass-rails (~> 3.2.3)
   shinobi!
   thin
