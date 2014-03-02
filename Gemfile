@@ -18,7 +18,7 @@ gem "bootstrap-sass", "~> 3.1.1"
 gem "daemon-spawn", :require => "daemon_spawn"
 gem "shinobi", :git => "git://github.com/saarons/shinobi.git"
 gem "resque", "1.24.1", :require => ["resque", "resque/server"]
-gem "resque-scheduler", :require => ["resque_scheduler", "resque_scheduler/server"]
+gem "resque-scheduler", "2.0.1", :require => ["resque_scheduler", "resque_scheduler/server"]
 
 group :production do
   gem "unicorn"
