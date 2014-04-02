@@ -12,7 +12,7 @@ en:
                 double_sided: "Double-sided?"
     meta_description: "Print@CU is a service that allows Columbia University students to print to any printer on campus."
     something_bad_happened: "Something Bad Happened"
-    title: "Print@Крым / Print@Crimea"
+    title: "Print@CU"
     success:
         html:
             one:
