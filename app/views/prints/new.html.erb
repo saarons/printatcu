@@ -61,6 +61,10 @@
   <div class="col-sm-1 col-lg-1"><br><span class="hidden-xs divider">&raquo;<br><br></span></div>
   <div class="col-sm-3 col-lg-3">
     <%= f.submit(:class => "btn btn-success btn-lg btn-block") %>
+    <div class="pdf-warning hidden">
+      <h4>For best results, upload a PDF.</h3>
+    </div>
+
     <div class="checkbox">
       <%= f.label(:collate) do %>
         <%= f.check_box :collate %>
@@ -80,8 +84,8 @@
       <%= f.number_field :copies, :class => "form-control", placeholder: 1, maxlength: 2, :in => 1..99 %>
     </div>
 
-    <div class="pdf-warning hidden">
-      <h4>For best results, upload a PDF.</h3>
+    <div class="printing-quota">
+        <a href="https://wwwapp.cc.columbia.edu/atg/PageServer" target="_blank" class="btn btn-info">Check Your Printing Quota</a>
     </div>
   </div>
 </div>
