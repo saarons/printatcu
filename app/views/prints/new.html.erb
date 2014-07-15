@@ -56,7 +56,7 @@
     <%
       policy, signature = $filepicker.policy('pick')
     %>
-    <input id="filepicker" name="urls" data-fp-policy="<%= policy %>" data-fp-signature="<%= signature %>" data-fp-apikey="<%= $filepicker.api_key %>" type="filepicker-dragdrop" data-fp-multiple="true" data-fp-drag-class="col-xs-12 printatcu-dragdrop" data-fp-extensions="<%= ALL_EXTENSIONS.join(",") %>" data-fp-button-class="btn btn-primary btn-block btn-lg"/>
+    <input id="filepicker" name="urls" data-fp-policy="<%= policy %>" data-fp-signature="<%= signature %>" data-fp-apikey="<%= $filepicker.api_key %>" type="filepicker-dragdrop" data-fp-multiple="true" data-fp-drag-class="col-xs-12 printatcu-dragdrop" data-fp-extensions="<%= ALL_EXTENSIONS.join(",") %>" data-fp-button-class="btn btn-primary btn-block btn-lg" onchange="checkFileType(event.fpfiles)"/>
   </div>
   <div class="col-sm-1 col-lg-1"><br><span class="hidden-xs divider">&raquo;<br><br></span></div>
   <div class="col-sm-3 col-lg-3">
@@ -78,6 +78,10 @@
     <div class="input-group">
       <span class="input-group-addon">Copies:</span>
       <%= f.number_field :copies, :class => "form-control", placeholder: 1, maxlength: 2, :in => 1..99 %>
+    </div>
+
+    <div class="pdf-warning hidden">
+      <h4>For best results, upload a PDF.</h3>
     </div>
   </div>
 </div>

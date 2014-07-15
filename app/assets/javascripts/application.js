@@ -34,3 +34,31 @@ var _gauges = _gauges || [];
 var OX_731328f5e6 = OX();
 OX_731328f5e6.addPage("536870958");
 OX_731328f5e6.fetchAds();
+
+function checkFileType(files){
+  if(files == undefined){
+    showPDFWarning(false);
+    return;
+  }
+  else{
+    var length = files.length;
+    var allPDF = true;
+    while(length-- && allPDF){
+      allPDF = isPDF(files[length].filename);
+    }
+    showPDFWarning(!allPDF);
+  }
+}
+
+function showPDFWarning(toShow){
+  if(toShow){
+    $('.pdf-warning').removeClass('hidden');
+  }
+  else{
+    $('.pdf-warning').addClass('hidden');
+  }
+}
+
+function isPDF(fileName){
+  return fileName.substr(fileName.length - 3).toUpperCase() === "PDF";
+}
