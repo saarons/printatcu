@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "gon"
+gem "gon", "5.0.4"
 gem "thin"
 gem "mina"
 gem "haml"
