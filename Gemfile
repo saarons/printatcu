@@ -22,6 +22,7 @@ gem "resque", "1.24.1", :require => ["resque", "resque/server"]
 gem "resque-scheduler", "2.0.1", :require => ["resque_scheduler", "resque_scheduler/server"]
 
 group :production do
+  gem 'rails_12factor'
   gem "unicorn"
 end
 
