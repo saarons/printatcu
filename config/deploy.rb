@@ -3,19 +3,15 @@ require "mina/rails"
 require "mina/git"
 require "mina/rvm"
 
-set :user, "deploy"
+set :user, "rails"
 set :domain, "162.243.219.89"
-set :deploy_to, "/var/www/printatcu"
+set :deploy_to, "/home/rails/printatcu"
 set :repository, "https://github.com/spectatorpublishing/printatcu.git"
 set :branch, "master"
+set :rails_env, "production"
+#set :rvm_path, "/usr/local/rvm/bin/rvm"
 
 set :shared_paths, ["config/database.yml", "log", "public/uploads", "tmp/pids", "tmp/sockets"]
-
-set :rvm_path, "/usr/local/rvm/scripts/rvm"
-
-task :environment do
-  invoke :'rvm:use[ruby-2.0.0]'
-end
 
 task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/log"]
@@ -41,15 +37,16 @@ task :deploy => :environment do
   deploy do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
+#    invoke :'rvm:use[ruby-2.0.0-p353@default]'
     invoke :'bundle:install'
-    invoke :'rails:db_migrate'
-    invoke :'rails:assets_precompile'
+#    invoke :'rails:db_migrate'
+#    invoke :'rails:assets_precompile'
 
     to :launch do
       if ENV["cold"]
-        invoke :start
+#        invoke :start
       else
-        invoke :restart
+#        invoke :restart
       end
     end
   end
