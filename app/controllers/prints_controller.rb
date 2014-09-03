@@ -6,11 +6,11 @@ class PrintsController < ApplicationController
     @print = Print.new
   end
   
-  def create    
-    @print = Print.new(params[:print])
+  def create
+    @print = Print.new(params[:print].merge({building: $buildings.first, printer: $printers.first.last.first }))
     @print.ip = get_ip
-    @print.user = get_user
-
+    @print.user = params[:print][:uni].nil? ? get_user : params[:print][:uni]
+    @print.printer = "lerner200a"
     @print.build_documents(params[:urls])
 
     respond_to do |format|
