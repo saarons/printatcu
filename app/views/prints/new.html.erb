@@ -43,8 +43,27 @@
     </div>
     <div class="row">
       <div class="col-lg-12">
+        <h5>Building</h5>
+        <%= f.select(:building, buildings, {:selected => choose_building}, {:class => "form-control", :onload => 'changePrinters()', :onchange => 'changePrinters()'}) %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-lg-12">
         <h5>Printer</h5>
-        <%= f.select(:printer, all_printers, {:selected => choose_printer}, {:class => "form-control"}) %>
+        <div class="printer-group text-center" data-toggle="buttons">
+           <% default_printers.each_with_index do |printer, index| %>
+            <% if index == 0 %>
+              <label class="btn btn-primary printer-button active">
+                <input type="radio" name="printer" value="<%= printer %>" checked> <%= printer %>
+              </label>
+            <% else %>
+              <label class="btn btn-primary printer-button">
+                <input type="radio" name="printer" value="<%= printer %>"><%= printer %>
+              </label>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>      

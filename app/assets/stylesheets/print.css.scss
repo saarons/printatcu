@@ -63,3 +63,20 @@
 .printing-quota {
   padding-top: 15px;
 }
+
+.greenStatus {
+  border: solid;
+  color: green;
+}
+.redStatus {
+  border: solid;
+  color: red;
+}
+.yellowStatus {
+  border: solid;
+  color: yellow;
+  font-size: 24px;
+}
+.printer-button {
+  margin: 2px 1px 2px 1px;
+}

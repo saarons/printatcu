@@ -7,11 +7,11 @@ class PrintsController < ApplicationController
   end
   
   def create
-    @print = Print.new(params[:print].merge({building: $buildings.first, printer: $printers.first.last.first }))
+    @print = Print.new(params[:print].merge({printer: params[:printer] }))
     @print.ip = get_ip
     @print.user = params[:print][:uni].blank? ? get_user : params[:print][:uni]
     @print.build_documents(params[:urls])
-
+    binding.pry
     respond_to do |format|
       if success = @print.save
         @print.enqueue
