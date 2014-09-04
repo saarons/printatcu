@@ -7,7 +7,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require cookie
-//= require select2
 //= require bootstrap
 //= require_tree .
 
