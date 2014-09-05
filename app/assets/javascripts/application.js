@@ -68,7 +68,6 @@ function changePrinters(){
     "yellow" : "warning",
     "green" : "success",
   }
-  console.log("test");
   var building = $("select#print_building");
   var printers = gon.printers[building.val()];
   var lastIndex = printers.length - 1;
