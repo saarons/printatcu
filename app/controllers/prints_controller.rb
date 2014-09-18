@@ -6,7 +6,7 @@ class PrintsController < ApplicationController
     @print = Print.new
   end
   
-  def create    
+  def create
     @print = Print.new(params[:print])
     @print.ip = get_ip
     @print.user = get_user
@@ -26,6 +26,27 @@ class PrintsController < ApplicationController
       end
     end
   end
+
+  def test
+    @print = Print.new(params[:print])
+    @print.ip = get_ip
+    @print.user = get_user
+
+    @print.build_documents(params[:urls])
+
+    respond_to do |format|
+      if success = @print.save
+        @print.enqueue
+
+        set_flash(@print)
+        set_cookies(@print)
+        
+        format.html { redirect_to root_path(success: success) }
+      else
+        format.html { render action: "new" }
+      end
+    end
+  end  
   
   private
   def sanitize_input
