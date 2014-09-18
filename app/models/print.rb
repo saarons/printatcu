@@ -9,7 +9,18 @@ class Print < ActiveRecord::Base
 
   def enqueue
     document_ids.map do |document_id|
-      Resque.enqueue(PrintWorker, document_id)
+      Document.find(document_id).save
+      document = Document.find(document_id)
+      document.fetch
+      
+      ok = document.needs_conversion? ? document.convert : true
+
+      if ok
+        document.enqueue
+        document.announce
+      end
+
+      document.cleanup
     end
   end
 
