@@ -15,11 +15,4 @@ module PrintHelper
     building = choose_building || buildings.first
     $printers[building]
   end
-  def all_printers
-    printers = []
-    buildings.each do |building|
-      printers.concat $printers[building]      
-    end
-    printers.sort
-  end
 end

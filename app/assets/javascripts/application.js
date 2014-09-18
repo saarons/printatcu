@@ -7,6 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require cookie
+//= require select2
 //= require bootstrap
 //= require_tree .
 
@@ -61,34 +62,3 @@ function showPDFWarning(toShow){
 function isPDF(fileName){
   return fileName.substr(fileName.length - 3).toUpperCase() === "PDF";
 }
-
-function changePrinters(){
-  var statusMap = {
-    "red" : "danger",
-    "yellow" : "warning",
-    "green" : "success",
-  }
-  var building = $("select#print_building");
-  var printers = gon.printers[building.val()];
-  var lastIndex = printers.length - 1;
-  var index = 0;
-  var printer = $(".printer-group");
-  printer.empty();
-  while(index <= lastIndex){
-    var printerName = printers[index];
-    var printerStatus = gon.status[printerName];
-    if(index == 0){
-      var radio = $("<input type=\"radio\" name=\"printer\" checked value="+printerName+">");
-      var ele = $("<label></label>").addClass("btn btn-" + statusMap[printerStatus] + " active printer-button").append(radio).append(printerName);
-    }
-    else {
-      var radio = $("<input type=\"radio\" name=\"printer\" value="+printerName+">");
-      var ele = $("<label></label>").addClass("btn btn-" + statusMap[printerStatus] + " printer-button").append(radio).append(printerName);
-    }
-    //ele.addClass(gon.status[printerName] + "Status");
-    printer.append(ele);
-    index++;
-  }
-}
-
-$("select#print_building").ready( changePrinters );

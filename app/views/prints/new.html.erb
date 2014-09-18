@@ -1,5 +1,9 @@
 <div class="container">
 
+<script>
+  var defaults = <%= (!!choose_building).to_s %>;
+</script>
+
 <% if flash[:printer] && flash[:user] %>
   <div class="alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -27,12 +31,6 @@
 </div>
 
 <br/>
-
-<h5 class="text-center">
-*Print@CU has migrated to the new NINJA printing system and thus will not work for those printers that still utilize the old printing system.
-</h5>
-
-<br/>
 <br/>
 
 <%= form_for @print do |f| %>
@@ -41,38 +39,18 @@
   <div class="choose-destination col-sm-3 col-lg-3">
     <div class="row">
       <div class="col-lg-12">
-        <div class="input-group">
-          <span class="input-group-addon">Uni</span>
-          <%= f.text_field :uni, :class => "form-control" %>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12">
         <h5>Building</h5>
-        <%= f.select(:building, buildings, {:selected => choose_building}, {:class => "form-control", :onload => 'changePrinters()', :onchange => 'changePrinters()'}) %>
+        <%= f.select(:building, buildings, :selected => choose_building) %>
       </div>
     </div>
     <br>
     <div class="row">
       <div class="col-lg-12">
         <h5>Printer</h5>
-        <div class="printer-group text-center" data-toggle="buttons">
-           <% default_printers.each_with_index do |printer, index| %>
-            <% if index == 0 %>
-              <label class="btn btn-primary printer-button active">
-                <input type="radio" name="printer" value="<%= printer %>" checked> <%= printer %>
-              </label>
-            <% else %>
-              <label class="btn btn-primary printer-button">
-                <input type="radio" name="printer" value="<%= printer %>"><%= printer %>
-              </label>
-            <% end %>
-          <% end %>
-        </div>
+        <%= f.select(:printer, default_printers, :selected => choose_printer) %>
       </div>
     </div>
-  </div>      
+  </div>
   <div class="col-sm-1 col-lg-1"><br><span class="hidden-xs divider">&raquo;</span></div>
   <div class="col-sm-4 col-lg-4">
     <%
@@ -113,15 +91,6 @@
 </div>
 
 <% end %>
-<br/>
-<br/>
-<h5 class="text-center">
-Notes on the new CUIT NINJA printing system:<br/><br/>
-- All printers will eventually be on the new system.<br/>
-- Single-sided printing and multi-selection of jobs are pending.<br/>
-- Jobs sent with the uni field filled out can be accessed under the Cloud jobs of your account at any printer after a short delay.<br/>
-- Jobs sent without the uni field, the print jobs will be sent to the global queue at the selected printer rather than to your account.<br/>
-</h5>
 
 <br/>
 <br/>

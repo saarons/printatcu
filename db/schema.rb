@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140827223353) do
+ActiveRecord::Schema.define(:version => 20130904190048) do
 
   create_table "documents", :force => true do |t|
     t.integer  "print_id"
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(:version => 20140827223353) do
     t.boolean  "collate"
     t.integer  "copies"
     t.string   "ip"
-    t.string   "uni"
   end
 
 end
