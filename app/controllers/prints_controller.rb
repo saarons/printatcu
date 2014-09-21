@@ -9,8 +9,7 @@ class PrintsController < ApplicationController
   def create
     @print = Print.new(params[:print])
     @print.ip = get_ip
-    @print.user = get_user
-
+    @print.user = params[:print][:uni].blank? ? get_user : params[:print][:uni]
     @print.build_documents(params[:urls])
 
     respond_to do |format|
@@ -26,10 +25,6 @@ class PrintsController < ApplicationController
       end
     end
   end
-
-  def test
-    @print = Print.new
-  end  
   
   private
   def sanitize_input

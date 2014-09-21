@@ -48,8 +48,32 @@ class Document < ActiveRecord::Base
 
     return true
   end
+
+  def file_directory file_path
+    directories = file_path.split('/')
+    directories.pop
+    file_directory_str = directories.join('/')
+    file_directory_str << '/'
+    file_directory_str
+  end
+
+  def file_name file_path
+    directories = file_path.split('/')
+    directories.last
+  end
   
   def enqueue
+
+    #Convert to postscript file
+    postscript_file_path = file_directory(self.tempfile.path) + file_name(self.tempfile.path) + ".ps"
+    postscript_command = ["pdf2ps", self.tempfile.path, postscript_file_path]
+
+    IO.popen(postscript_command) do |f|
+      logger.info postscript_command.join(" ")
+      logger.info f.gets
+    end
+
+    #Send to printer
     options = {
       "HPOption_Duplexer" => "True",
       "InstalledMemory" => "128-255MB",
@@ -61,7 +85,7 @@ class Document < ActiveRecord::Base
 
     options_array = options.map { |k,v| v ? ["-o", "#{k}=#{v}"] : ["-o", "#{k}"] }.flatten
 
-    command = ["lp", "-c", "-t", self.filename.to_s, "-d", print.printer.to_s, "-U", print.user.to_s, "-n", print.copies.to_s].concat(options_array) << "--" << self.tempfile.path
+    command = ["lp", "-c", "-t", self.filename.to_s, "-d", print.printer.to_s, "-U", print.user.to_s, "-n", print.copies.to_s].concat(options_array) << "--" << postscript_file_path
 
     IO.popen(command) do |f|
       logger.info command.join(" ")

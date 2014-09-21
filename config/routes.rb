@@ -4,7 +4,6 @@ Printatcu::Application.routes.tap do |routes|
   routes.draw do
     resources :prints, :only => [:new, :create]
     root :to => "prints#new"
-    get '/prints/test', to: 'prints#test'
     mount Resque::Server.new, :at => "/resque"
   end
 end
