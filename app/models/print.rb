@@ -10,7 +10,7 @@ class Print < ActiveRecord::Base
   def enqueue
     document_ids.map do |document_id|
       doc = Document.find(document_id)
-      Resque.enqueue(PrintWorker, doc.print_id, doc.filename, doc.url, doc.print.url, doc.print.building, doc.print.printer, doc.print.user, doc.print.double_sided, doc.print.collate, doc.print.copies, doc.print.ip)
+      Resque.enqueue(PrintWorker, doc.print_id, doc.filename, doc.url, doc.print.building, doc.print.printer, doc.print.user, doc.print.double_sided, doc.print.collate, doc.print.copies, doc.print.ip)
     end
   end
 
