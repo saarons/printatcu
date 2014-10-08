@@ -6,10 +6,11 @@ class PrintsController < ApplicationController
     @print = Print.new
   end
   
-  def create
+  def create    
     @print = Print.new(params[:print])
     @print.ip = get_ip
-    @print.user = params[:print][:uni].blank? ? get_user : params[:print][:uni]
+    @print.user = get_user
+
     @print.build_documents(params[:urls])
 
     respond_to do |format|
