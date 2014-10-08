@@ -26,6 +26,12 @@ group :production do
   gem "unicorn"
 end
 
+group :development, :testing do
+  gem 'binding_of_caller'
+  gem 'pry'
+  gem 'better_errors'
+end 
+
 group :assets do
   gem "uglifier", ">= 1.0.3"
   gem "sass-rails", "~> 3.2.3"
