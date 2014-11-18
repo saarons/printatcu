@@ -1,4 +1,9 @@
 ---
+broadway101a:
+  :host: broadway100a-ninja.atg.columbia.edu
+  :driver: HP LaserJet 9050 PS
+  :location: Residence Halls
+  :double_sided: true
 broadway304a:
   :host: broadway304a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS

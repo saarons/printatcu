@@ -1,5 +1,5 @@
 source "http://rubygems.org"
-ruby "2.0.0"
+
 gem "gon", "5.0.4"
 gem "thin"
 gem "mina"
