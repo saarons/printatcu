@@ -3,8 +3,7 @@ class Document < ActiveRecord::Base
   attr_accessor :tempfile
 
   def fetch
-    policy = $filepicker.policy('read')
-    signature = $filepicker.sign(policy)
+    policy, signature = $filepicker.policy('read')
     response = Excon.get(self.url, query: {policy: policy, signature: signature})
 
     self.filename = response.headers["X-File-Name"] || "Untitled"
@@ -23,30 +22,31 @@ class Document < ActiveRecord::Base
   end
   
   def convert
-    policy = $filepicker.policy('read')
-    signature = $filepicker.sign(policy)
+    policy, signature = $filepicker.policy('read')
     actual_url = "#{self.url}?policy=#{policy}&signature=#{signature}"
-    
-    response = Excon.get("https://docs.google.com/viewer", :query => {:url => actual_url})
-    gp_url = response.body[/gpUrl:('[^']*')/,1]
-    
-    if status = gp_url.present?
-      pdf_url = ExecJS.eval(gp_url)
-      cookie_jar = Tempfile.new("cookie_jar")
 
-      command = ["curl", "-s", "-L", "-c", cookie_jar.path, "-o", self.tempfile.path, pdf_url]
-
-      begin
-        IO.popen(command) do |f|
-          logger.info command.join(" ")
-          logger.info f.gets
-        end
-      ensure
-        cookie_jar.close!
-      end
+    pdf_url = begin
+      response = Excon.get("https://docs.google.com/viewer", :query => {:url => actual_url})
+      gp_url = response.body[/gpUrl:('[^']*')/,1]
+      ExecJS.eval(gp_url) if gp_url.present?
     end
 
-    return status
+    return false unless pdf_url
+
+    cookie_jar = Tempfile.new("cookie_jar")
+
+    command = ["curl", "-s", "-L", "-c", cookie_jar.path, "-o", self.tempfile.path, pdf_url]
+
+    begin
+      IO.popen(command) do |f|
+        logger.info command.join(" ")
+        logger.info f.gets
+      end
+    ensure
+      cookie_jar.close!
+    end
+
+    return true
   end
   
   def enqueue
@@ -61,7 +61,7 @@ class Document < ActiveRecord::Base
 
     options_array = options.map { |k,v| v ? ["-o", "#{k}=#{v}"] : ["-o", "#{k}"] }.flatten
 
-    command = ["lp", "-c", "-E", "-t", self.filename.to_s, "-d", print.printer.to_s, "-U", print.user.to_s, "-n", print.copies.to_s].concat(options_array) << "--" << self.tempfile.path
+    command = ["lp", "-c", "-t", self.filename.to_s, "-d", print.printer.to_s, "-U", print.user.to_s, "-n", print.copies.to_s].concat(options_array) << "--" << self.tempfile.path
 
     IO.popen(command) do |f|
       logger.info command.join(" ")
@@ -79,8 +79,7 @@ class Document < ActiveRecord::Base
   def cleanup
     self.tempfile.unlink
 
-    policy = $filepicker.policy('remove')
-    signature = $filepicker.sign(policy)
+    policy, signature = $filepicker.policy('remove')
     Excon.delete(self.url, query: {policy: policy, signature: signature})
   end
 end

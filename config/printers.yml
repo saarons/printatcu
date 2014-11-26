@@ -1,4 +1,9 @@
 ---
+broadway101a:
+  :host: broadway100a-ninja.atg.columbia.edu
+  :driver: HP LaserJet 9050 PS
+  :location: Residence Halls
+  :double_sided: true
 broadway304a:
   :host: broadway304a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
@@ -43,6 +48,11 @@ butler403a:
   :host: butler403a-ninja.atg.columbia.edu
   :driver: HP LaserJet 9050 PS
   :location: Butler
+  :double_sided: true
+campbell505a:
+  :host: campbell505a-ninja.atg.columbia.edu
+  :driver: HP LaserJet 9050 PS
+  :location: Baker Athletics Complex
   :double_sided: true
 carlton100a:
   :host: carlton100a-ninja.atg.columbia.edu
@@ -123,6 +133,16 @@ iab509a:
   :host: iab509a-ninja.atg.columbia.edu
   :driver: HP LaserJet P4515
   :location: International Affairs
+  :double_sided: true
+johnjay100a:
+  :host: johnjay100a-ninja.atg.columbia.edu
+  :driver: HP LaserJet 9050 PS
+  :location: John Jay
+  :double_sided: true
+johnjay100b:
+  :host: johnjay100b-ninja.atg.columbia.edu
+  :driver: HP LaserJet 9050 PS
+  :location: John Jay
   :double_sided: true
 lerner200a:
   :host: lerner200a-ninja.atg.columbia.edu
@@ -244,81 +264,6 @@ woodbridge100a:
   :driver: HP LaserJet 9050 PS
   :location: Residence Halls
   :double_sided: true
-bclibrary100a:
-  :host: bclibrary100a-ninja.barnard.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Barnard
-  :double_sided: true
-bclibrary200a:
-  :host: bclibrary200a-ninja.barnard.edu
-  :driver: HP LaserJet 9050 Series PS
-  :location: Barnard
-  :double_sided: true
-brooks100a:
-  :host: brooks100a-ninja.barnard.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Barnard
-  :double_sided: true
-brooks100b:
-  :host: brooks100b-ninja.barnard.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Barnard
-  :double_sided: true
-dcc413b:
-  :host: dcc413b-ninja.barnard.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Barnard
-  :double_sided: true
-diana307a:
-  :host: diana307a-ninja.barnard.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Barnard
-  :double_sided: true
-diana307b:
-  :host: diana307b-ninja.barnard.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Barnard
-  :double_sided: true
-diana307c:
-  :host: diana307c-ninja.barnard.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Barnard
-  :double_sided: true
-diana307d:
-  :host: diana307d-ninja.barnard.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Barnard
-  :double_sided: true
-lehman018a:
-  :host: lehman018a-ninja.barnard.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Barnard
-  :double_sided: true
-plimpton100a:
-  :host: plimpton100a-ninja.barnard.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Barnard
-  :double_sided: true
-plimpton100b:
-  :host: plimpton100b-ninja.barnard.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Barnard
-  :double_sided: true
-sixsixteen100a:
-  :host: sixsixteen100a-ninja.barnard.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Barnard
-  :double_sided: true
-sixsixteen100b:
-  :host: sixsixteen100b-ninja.barnard.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Barnard
-  :double_sided: true
-sulzberger100a:
-  :host: sulzberger100a-ninja.barnard.edu
-  :driver: HP LaserJet 9050 PS
-  :location: Barnard
-  :double_sided: true
 avery200a:
   :host: avery200a-ninja.atg.columbia.edu
   :driver: HP LaserJet P4015
@@ -401,11 +346,6 @@ nwcb400a:
   :double_sided: true
 nwcb400b:
   :host: nwcb400b-ninja.atg.columbia.edu
-  :driver: HP LaserJet P4515
-  :location: Northwest Corner Building
-  :double_sided: true
-nwcb600a:
-  :host: nwcb600a-ninja.atg.columbia.edu
   :driver: HP LaserJet P4515
   :location: Northwest Corner Building
   :double_sided: true

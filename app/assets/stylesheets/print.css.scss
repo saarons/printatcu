@@ -21,7 +21,7 @@
 .select2-container .status {
   float: left;
   margin-top: 5px;
-  margin-right: -15px;  
+  margin-right: 5px;  
 }
 
 .select2-results .status {
@@ -50,4 +50,29 @@
   text-align: center;
   line-height: 90px !important;
   margin: 6px 0px 0px 0px !important;
+}
+
+.pdf-warning {
+  color:red;
+}
+
+.hidden {
+  display: none;
+}
+
+.printing-quota {
+  padding-top: 15px;
+}
+
+.full-page-ad {
+  position:absolute;
+  width: 100%;
+}
+
+h5 {
+  color: #c9bf63;
+}
+
+label {
+  color: white;
 }
